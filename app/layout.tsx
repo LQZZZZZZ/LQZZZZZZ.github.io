@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://lqzzzzzz.github.io/og.png",
-        width: 1731,
-        height: 909,
+        width: 1732,
+        height: 908,
         alt: "Qizhe Li academic profile",
       },
     ],
