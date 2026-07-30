@@ -4,7 +4,7 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-test("homepage joins profile and background with one research section", async () => {
+test("homepage is dedicated to profile and background", async () => {
   const [page, data] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("app/research-data.ts", root), "utf8"),
@@ -25,8 +25,7 @@ test("homepage joins profile and background with one research section", async ()
   assert.doesNotMatch(page, /I study how reliable learning and reasoning/);
   assert.match(page, /profile-history/);
   assert.doesNotMatch(page, /research-threads/);
-  assert.match(page, /<h2>Selected publications<\/h2>/);
-  assert.equal((page.match(/id="publications"/g) ?? []).length, 1);
+  assert.doesNotMatch(page, /Selected publications|patent-list|everything-teaser/);
   assert.match(data, /Uncertainty Quantification/);
   assert.match(data, /AI for Networks/);
   assert.match(page, /Google Scholar/);
@@ -34,22 +33,29 @@ test("homepage joins profile and background with one research section", async ()
   assert.match(data, /github\.com\/LQZZZZZZ\/DK_Root/);
 });
 
-test("patents are presented separately with verified publication records", async () => {
-  const [page, header] = await Promise.all([
+test("top-level tabs lead to separate pages", async () => {
+  const [home, publications, patentPage, patentData, header] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
+    readFile(new URL("app/publications/page.tsx", root), "utf8"),
+    readFile(new URL("app/patents/page.tsx", root), "utf8"),
+    readFile(new URL("app/patent-data.ts", root), "utf8"),
     readFile(new URL("app/SiteHeader.tsx", root), "utf8"),
   ]);
 
-  assert.match(header, />Publications</);
-  assert.match(header, />Patents</);
+  assert.match(header, /href="\/publications\/">Publications</);
+  assert.match(header, /href="\/patents\/">Patents</);
+  assert.match(header, /href="\/everything\/">Everything is Research</);
   assert.doesNotMatch(header, />Timeline</);
-  assert.match(page, /id="patents"/);
-  assert.equal((page.match(/status: "(?:Filed|Granted)"/g) ?? []).length, 4);
-  assert.match(page, /ZL202511903863\.4/);
-  assert.match(page, /CN121357036B/);
-  assert.match(page, /CN116451570B/);
-  assert.match(page, /CN116562124B/);
-  assert.doesNotMatch(page, /CN111046606A|CN106372278A/);
+  assert.doesNotMatch(home, /ResearchTimeline|patent-list/);
+  assert.match(publications, /ResearchTimeline/);
+  assert.match(publications, /Selected publications/);
+  assert.match(patentPage, /patent-list/);
+  assert.equal((patentData.match(/status: "(?:Filed|Granted)"/g) ?? []).length, 4);
+  assert.match(patentData, /ZL202511903863\.4/);
+  assert.match(patentData, /CN121357036B/);
+  assert.match(patentData, /CN116451570B/);
+  assert.match(patentData, /CN116562124B/);
+  assert.doesNotMatch(patentData, /CN111046606A|CN106372278A/);
 });
 
 test("research timeline is vertical, filterable, illustrated, and reverse chronological", async () => {

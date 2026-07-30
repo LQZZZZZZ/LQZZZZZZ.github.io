@@ -260,6 +260,16 @@ h1 {
   padding-top: clamp(5rem, 9vw, 8rem);
 }
 
+.page-section {
+  border-top: 0;
+  min-height: calc(100vh - 180px);
+  padding-top: clamp(4.5rem, 8vw, 7rem);
+}
+
+.page-section .section-heading h1 {
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+}
+
 .section-heading { max-width: 720px; }
 
 .section-heading h2,

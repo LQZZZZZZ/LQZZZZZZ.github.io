@@ -1,50 +1,7 @@
-import ResearchTimeline from "./ResearchTimeline";
 import SiteHeader from "./SiteHeader";
 import { scholarUrl } from "./research-data";
 
 const githubUrl = "https://github.com/LQZZZZZZ";
-
-const patents = [
-  {
-    title:
-      "LLM-Agent-Based Root-Cause Reasoning for User-Experience Anomalies in Communication Networks",
-    inventors: "Qizhe Li, Guangxu Zhu, et al.",
-    number: "Invention patent application",
-    status: "Filed",
-    summary:
-      "An agent-based reasoning method that uses large language models to trace the root causes of user-experience anomalies in communication networks.",
-  },
-  {
-    title:
-      "Training Method, Apparatus, Device, and Medium for a Network Poor-Quality Root-Cause Identification Model",
-    inventors: "Qizhe Li, Haolong Chen, et al.",
-    number: "ZL202511903863.4 · CN121357036B",
-    status: "Granted",
-    summary:
-      "A training framework for identifying the root causes of poor network quality from operational network data and structured diagnostic knowledge.",
-    link: "https://patents.google.com/patent/CN121357036B/en",
-  },
-  {
-    title:
-      "Method and Apparatus for Uncertainty Propagation of Radome Electromagnetic Performance",
-    inventors: "Hanyan Huang, Qizhe Li, et al.",
-    number: "CN116451570B",
-    status: "Granted",
-    summary:
-      "A data-driven method for propagating input uncertainty through radome models and efficiently estimating uncertainty in electromagnetic performance.",
-    link: "https://patents.google.com/patent/CN116451570B/en",
-  },
-  {
-    title:
-      "Method and Apparatus for Predicting the Effects of Ablation on the Electromagnetic Performance of High-Speed Aircraft Radomes",
-    inventors: "Hanyan Huang, Shan Xie, Zecong Liu, Qizhe Li, et al.",
-    number: "CN116562124B",
-    status: "Granted",
-    summary:
-      "A multi-fidelity surrogate-modeling approach that combines ablation-stage, transmission-stage, and system-level data for rapid electromagnetic-performance prediction.",
-    link: "https://patents.google.com/patent/CN116562124B/en",
-  },
-];
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
@@ -163,70 +120,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section timeline-section" id="publications">
-        <div className="timeline-heading">
-          <div className="section-heading">
-            <p className="eyebrow">Publications</p>
-            <h2>Selected publications</h2>
-            <p>
-              Research in AI for wireless networking and uncertainty
-              quantification, arranged from newest to oldest.
-            </p>
-          </div>
-          <a href={scholarUrl} target="_blank" rel="noreferrer">
-            Full publication record <Arrow />
-          </a>
-        </div>
-        <ResearchTimeline />
-      </section>
-
-      <section className="section patent-section" id="patents">
-        <div className="section-heading">
-          <p className="eyebrow">Patents</p>
-          <h2>Invented with collaborators</h2>
-          <p>
-            Patents spanning intelligent network diagnosis and uncertainty-aware
-            electromagnetic modeling.
-          </p>
-        </div>
-        <ol className="patent-list">
-          {patents.map((patent, index) => (
-            <li key={patent.title}>
-              <div className="patent-number">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <small>{patent.status}</small>
-              </div>
-              <div className="patent-copy">
-                <h3>{patent.title}</h3>
-                <p className="patent-inventors">{patent.inventors}</p>
-                <p className="patent-id">{patent.number}</p>
-                <p>{patent.summary}</p>
-                {patent.link && (
-                  <a href={patent.link} target="_blank" rel="noreferrer">
-                    Patent record <Arrow />
-                  </a>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="everything-teaser">
-        <p className="eyebrow">Beyond formal publications</p>
-        <div>
-          <h2>Everything is Research</h2>
-          <p>
-            Small systems and side questions: an automated literature agent,
-            video-based tennis movement research, and other experiments that do
-            not belong in the publication timeline.
-          </p>
-          <a href="/everything/">
-            Open the project notebook <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </section>
-
       <footer>
         <div>
           <p>Qizhe Li</p>
@@ -235,7 +128,8 @@ export default function Home() {
         <div className="footer-links">
           <a href={scholarUrl} target="_blank" rel="noreferrer">Scholar</a>
           <a href={githubUrl} target="_blank" rel="noreferrer">GitHub</a>
-          <a href="#about">Back to top ↑</a>
+          <a href="/publications/">Publications</a>
+          <a href="/patents/">Patents</a>
         </div>
       </footer>
     </main>
