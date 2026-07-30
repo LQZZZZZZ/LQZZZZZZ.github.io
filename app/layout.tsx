@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://lqzzzzzz.github.io"),
   title: "Qizhe Li · Trustworthy AI & Intelligent Networks",
   description:
-    "Qizhe Li's academic homepage: uncertainty quantification, AI for networks, publications, and open research.",
+    "Qizhe Li's academic profile: uncertainty quantification, AI for networks, an interactive publication timeline, and research projects.",
   openGraph: {
     title: "Qizhe Li · Trustworthy AI & Intelligent Networks",
     description: "Uncertainty quantification · AI for networks · Open research",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       {
         url: "https://lqzzzzzz.github.io/og.png",
         width: 1731,
-        height: 908,
+        height: 909,
         alt: "Qizhe Li academic profile",
       },
     ],
