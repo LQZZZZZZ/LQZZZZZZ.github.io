@@ -33,6 +33,16 @@ test("research timeline is interactive, illustrated, and reverse chronological",
   assert.match(timeline, /Uncertainty Quantification/);
   assert.match(data, /\/research\/dk-root-overview\.png/);
   assert.match(data, /\/research\/qoe-reasoner-overview\.png/);
+  assert.equal(
+    (data.match(/image: "\/research\//g) ?? []).length,
+    8,
+    "every research work must include a figure",
+  );
+  assert.equal(
+    (data.match(/imageAlt: "/g) ?? []).length,
+    8,
+    "every research figure must have alternative text",
+  );
 
   const qoe = data.indexOf('id: "qoe-reasoner"');
   const dk = data.indexOf('id: "dk-root"');
@@ -48,9 +58,12 @@ test("Everything is Research separates tools and private prototypes", async () =
 
   assert.match(page, /Daily Literature Agent/);
   assert.match(page, /AutoPaperReporter/);
-  assert.match(page, /Tennis Motion Recognition/);
+  assert.match(page, /TennisTrace/);
+  assert.match(page, /project-card-grid/);
+  assert.match(page, /Action mechanics/);
+  assert.match(page, /Ball quality/);
   assert.match(page, /Private prototype/);
-  assert.doesNotMatch(page, /github\.com\/LQZZZZZZ\/TennisCoach/);
+  assert.doesNotMatch(page, /github\.com\/LQZZZZZZ\/Tennis/);
 });
 
 test("visitor counter has a privacy-minimal fallback", async () => {
@@ -65,7 +78,7 @@ test("visitor counter has a privacy-minimal fallback", async () => {
   assert.doesNotMatch(counter, /document\.referrer|search_query|email|timezone/);
 });
 
-test("design uses exactly two requested type families and responsive layouts", async () => {
+test("design uses only Comic Sans MS and responsive layouts", async () => {
   const [css, layout] = await Promise.all([
     readFile(new URL("app/globals.css", root), "utf8"),
     readFile(new URL("app/layout.tsx", root), "utf8"),
@@ -74,8 +87,8 @@ test("design uses exactly two requested type families and responsive layouts", a
   assert.match(css, /--pink:/);
   assert.match(css, /--lavender:/);
   assert.match(css, /@media \(max-width: 620px\)/);
-  assert.match(css, /"Times New Roman"/);
   assert.match(css, /"Comic Sans MS"/);
   assert.match(css, /scroll-snap-type: x mandatory/);
+  assert.doesNotMatch(css, /Times New Roman|Georgia|Arial|Helvetica/);
   assert.doesNotMatch(layout, /next\/font|Geist_Mono|Georgia|Times New Roman/);
 });

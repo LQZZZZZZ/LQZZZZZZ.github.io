@@ -14,9 +14,9 @@ export type ResearchWork = {
   scholar: string;
   paper: string;
   code?: string;
-  image?: string;
-  imageAlt?: string;
-  imageCaption?: string;
+  image: string;
+  imageAlt: string;
+  imageCaption: string;
 };
 
 export const scholarUrl =
@@ -75,6 +75,9 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:YsMSGLbcyi4C",
     paper: "https://doi.org/10.1109/ICCWorkshops63917.2026.11586658",
+    image: "/research/semiroot-overview.svg",
+    imageAlt: "Overview of the two-stage SemiRoot framework",
+    imageCaption: "Framework overview from the paper.",
   },
   {
     id: "s-ppr",
@@ -90,6 +93,9 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:Y0pCki6q_DkC",
     paper: "https://doi.org/10.1109/ACAI68217.2025.11406693",
+    image: "/research/sppr-overview.svg",
+    imageAlt: "Overview of the semantic-aware Personalized PageRank pipeline",
+    imageCaption: "Algorithm overview from the paper.",
   },
   {
     id: "rego",
@@ -105,6 +111,9 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:d1gkVwhDpl0C",
     paper: "https://doi.org/10.1080/0305215X.2023.2170367",
+    image: "/research/rego-method.svg",
+    imageAlt: "Method sketch showing the exploration and exploitation balance in REGO",
+    imageCaption: "Editorial method sketch based on the paper.",
   },
   {
     id: "morris",
@@ -121,6 +130,9 @@ export const researchWorks: ResearchWork[] = [
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:u-x6o8ySG0sC",
     paper:
       "https://doi.org/10.1615/Int.J.UncertaintyQuantification.2022044335",
+    image: "/research/morris-method.svg",
+    imageAlt: "Method sketch of progressive sampling and the Morris stopping criterion",
+    imageCaption: "Editorial method sketch based on the paper.",
   },
   {
     id: "pc-kriging",
@@ -136,6 +148,9 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:qjMakFHDy7sC",
     paper: "https://doi.org/10.1145/3644523.3644637",
+    image: "/research/pc-kriging-method.svg",
+    imageAlt: "Method sketch of data-driven PC-Kriging with correlated inputs",
+    imageCaption: "Editorial method sketch based on the paper.",
   },
   {
     id: "apce",
@@ -151,5 +166,8 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:9yKSN-GCB0IC",
     paper: "https://doi.org/10.1109/ICSRS56243.2022.10067257",
+    image: "/research/apce-method.svg",
+    imageAlt: "Method sketch of arbitrary polynomial chaos expansion for sensitivity analysis",
+    imageCaption: "Editorial method sketch based on the paper.",
   },
 ];
