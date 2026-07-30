@@ -845,6 +845,33 @@ footer span,
 .footer-links a { color: var(--muted); font-size: 0.9rem; }
 .footer-links { display: flex; gap: 1.3rem; }
 
+.not-found-page {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10vh 8vw;
+}
+
+.not-found-page h1 {
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
+  margin: 1rem 0;
+}
+
+.not-found-page > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  max-width: 610px;
+}
+
+.not-found-page a {
+  border-bottom: 1px solid var(--ink);
+  margin-top: 1.4rem;
+  padding-bottom: 0.2rem;
+}
+
 @media (max-width: 900px) {
   .topbar { grid-template-columns: 1fr auto; padding: 0 4vw; }
   .tabs { display: none; }
