@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lqzzzzzz.github.io"),
   title: "Qizhe Li 李启哲 · AI Researcher",
   description:
     "李启哲的个人学术主页：个性化智能体、通信智能体、科研基础设施、代表论文与研究 Demo。",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://qizhe-li-academic.likelly.chatgpt.site/og.png",
+        url: "https://lqzzzzzz.github.io/og.png",
         width: 1731,
         height: 909,
         alt: "Qizhe Li academic profile",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Qizhe Li · AI Researcher",
     description: "Intelligent agents · Telecom · AI for Science",
-    images: ["https://qizhe-li-academic.likelly.chatgpt.site/og.png"],
+    images: ["https://lqzzzzzz.github.io/og.png"],
   },
 };
 
