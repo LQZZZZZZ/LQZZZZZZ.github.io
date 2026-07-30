@@ -1,60 +1,195 @@
+import VisitorCounter from "./VisitorCounter";
+
 const scholarUrl =
   "https://scholar.google.com/citations?user=2XdjuasAAAAJ&hl=zh-CN";
 const githubUrl = "https://github.com/LQZZZZZZ";
 
-const researchAreas = [
+type Paper = {
+  title: string;
+  authors: string;
+  venue: string;
+  year: string;
+  abstract: string;
+  scholar: string;
+  paper: string;
+  code?: string;
+  tag: string;
+};
+
+const uncertaintyPapers: Paper[] = [
   {
-    icon: "✦",
-    title: "Personalized AI Agents",
-    cn: "个性化智能体",
-    description:
-      "探索能够理解长期目标、偏好与情境的智能体，让模型从一次性回答走向持续、可信的协作。",
-    tags: ["Personalization", "Long-term Memory", "Human–AI Interaction"],
+    title:
+      "An efficient global optimization algorithm combining revised expectation improvement criteria and Kriging",
+    authors: "Z. Liu, H. Huang, X. Xu, M. Xiong, Q. Li",
+    venue: "Engineering Optimization",
+    year: "2024",
+    tag: "Global optimization",
+    abstract:
+      "This work revises the expected-improvement criterion to better balance exploration and exploitation in Kriging-based optimization. The resulting REGO algorithm uses sample-distribution information to avoid premature convergence and demonstrates robust global-search performance on numerical problems and an airfoil design case.",
+    scholar:
+      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:d1gkVwhDpl0C",
+    paper: "https://doi.org/10.1080/0305215X.2023.2170367",
   },
   {
-    icon: "⌁",
-    title: "Agents for Telecom",
-    cn: "通信智能体",
-    description:
-      "面向复杂通信系统的自主推理、工具使用与任务编排，关注可靠性、可解释性与真实场景落地。",
-    tags: ["Telecommunications", "Tool Use", "Reliable AI"],
+    title:
+      "An enhanced framework for Morris by combining with a sequential sampling strategy",
+    authors: "Q. Li, H. Huang, S. Xie, L. Chen, Z. Liu",
+    venue: "International Journal for Uncertainty Quantification",
+    year: "2023",
+    tag: "Sensitivity analysis",
+    abstract:
+      "A sequential Morris framework is introduced to reduce the cost of sample-based sensitivity analysis. Progressive Latin hypercube sampling preserves space-filling properties as new starting points are added, while an adaptive stopping rule avoids unnecessary model evaluations.",
+    scholar:
+      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:u-x6o8ySG0sC",
+    paper: "https://doi.org/10.1615/Int.J.UncertaintyQuantification.2022044335",
   },
   {
-    icon: "◌",
-    title: "AI for Research",
-    cn: "智能科研基础设施",
-    description:
-      "构建支持文献理解、实验设计、数据分析和学术表达的可复用工作流，缩短从想法到证据的距离。",
-    tags: ["AI for Science", "Research Workflow", "Evaluation"],
+    title: "A data-driven PC-Kriging method considering correlated variables",
+    authors: "Y. Li, Q. Li, H. Huang",
+    venue: "International Conference on Algorithms, Computing and Artificial Intelligence",
+    year: "2023",
+    tag: "Surrogate modeling",
+    abstract:
+      "This paper develops a data-driven polynomial-chaos Kriging method for systems with correlated inputs. Adaptive Lasso selects a compact polynomial basis before it is embedded in a Kriging model, improving global approximation accuracy and sample efficiency across changing correlation structures.",
+    scholar:
+      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:qjMakFHDy7sC",
+    paper: "https://doi.org/10.1145/3644523.3644637",
+  },
+  {
+    title:
+      "Data-Driven Global Sensitivity Analysis Using the Arbitrary Polynomial Chaos Expansion Model",
+    authors: "Q. Li, H. Huang",
+    venue: "IEEE International Conference on System Reliability and Safety",
+    year: "2022",
+    tag: "Global sensitivity",
+    abstract:
+      "A global sensitivity-analysis workflow is built on arbitrary polynomial chaos expansion for cases where input distributions are only partially known. Sobol indices are estimated through the learned surrogate and Monte Carlo sampling, extending sensitivity analysis to more realistic data-limited settings.",
+    scholar:
+      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:9yKSN-GCB0IC",
+    paper: "https://doi.org/10.1109/ICSRS56243.2022.10067257",
   },
 ];
 
-const demos = [
+const networkPapers: Paper[] = [
   {
-    label: "DEMO 01",
-    title: "Personalized Agent",
-    cn: "个性化智能体原型",
-    description: "长期交互、用户目标理解与可控协作体验。",
-    color: "pink",
+    title:
+      "DK-Root: A Joint Data-and-Knowledge-Driven Framework for Root Cause Analysis of QoE Degradations in Mobile Networks",
+    authors:
+      "Q. Li, H. Chen, J. Li, S. Chai, X. Li, Y. Hou, X. Shao, F. Li, K. Han, G. Zhu",
+    venue: "IEEE Transactions on Networking",
+    year: "2026",
+    tag: "Root-cause analysis",
+    abstract:
+      "DK-Root combines weak operational rules with scarce expert labels for mobile-network QoE diagnosis. Contrastive pretraining mitigates rule noise, class-conditional diffusion supplies task-faithful augmentation, and expert-guided fine-tuning achieves strong results on real operator data with substantially fewer annotations.",
+    scholar:
+      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:IjCSPb-OGe4C",
+    paper: "https://doi.org/10.1109/TON.2026.3705395",
+    code: "https://github.com/LQZZZZZZ/DK_Root",
   },
   {
-    label: "DEMO 02",
-    title: "Telecom Agent",
-    cn: "通信任务智能体",
-    description: "任务拆解、工具调用、证据回溯与可靠执行。",
-    color: "purple",
+    title:
+      "QoEReasoner: An Agentic Reasoning Framework for Automated and Explainable QoE Diagnosis in RANs",
+    authors: "Q. Li, H. Chen, S. Dai, Z. Li, Z. Hu, X. Li, G. Zhu, Q. Shi",
+    venue: "arXiv preprint",
+    year: "2026",
+    tag: "Agentic diagnosis",
+    abstract:
+      "QoEReasoner is an end-to-end agentic system for explainable RAN diagnosis. Deterministic tools convert KPIs into evidence, a domain knowledge base constrains causal propagation, and a stateful planner coordinates anomaly detection and root localization, improving accuracy while reducing diagnostic time.",
+    scholar:
+      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:W7OEmFMy1HYC",
+    paper: "https://arxiv.org/abs/2606.01925",
   },
   {
-    label: "DEMO 03",
-    title: "Research Copilot",
-    cn: "科研工作流助手",
-    description: "文献检索、实验复现、分析与写作的一体化流程。",
-    color: "blue",
+    title:
+      "SemiRoot: A Semi-Supervised Deep Learning Framework for Root-Cause Analysis of QoE Degradations in Mobile Networks",
+    authors: "Q. Li, H. Chen, S. Fu, Z. Zou, G. Zhu",
+    venue: "IEEE ICC Workshops",
+    year: "2026",
+    tag: "Semi-supervised learning",
+    abstract:
+      "SemiRoot addresses label scarcity in mobile-network diagnosis through a two-stage semi-supervised framework. Rule-guided contrastive learning first structures the representation space, after which a small set of expert labels calibrates decision boundaries for label-efficient root-cause analysis.",
+    scholar:
+      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:YsMSGLbcyi4C",
+    paper: "https://doi.org/10.1109/ICCWorkshops63917.2026.11586658",
+  },
+  {
+    title:
+      "S-PPR: A Semantic-aware Personalized PageRank Framework for Academic Author Recommendation",
+    authors: "Y. Li, Q. Li, Z. Miao",
+    venue: "IEEE ACAI",
+    year: "2025",
+    tag: "Graph intelligence",
+    abstract:
+      "S-PPR augments Personalized PageRank with semantic information for academic collaborator discovery. It combines co-authorship frequency with title-embedding similarity in both teleportation and graph transitions, producing recommendations that better align with a researcher's interests.",
+    scholar:
+      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:Y0pCki6q_DkC",
+    paper: "https://doi.org/10.1109/ACAI68217.2025.11406693",
   },
 ];
 
-function ExternalArrow() {
+function Arrow() {
   return <span aria-hidden="true">↗</span>;
+}
+
+function PaperCard({ paper }: { paper: Paper }) {
+  return (
+    <article className="paper-card">
+      <div className="paper-meta">
+        <span>{paper.year}</span>
+        <span>{paper.tag}</span>
+      </div>
+      <h3>{paper.title}</h3>
+      <p className="authors">{paper.authors}</p>
+      <p className="venue">{paper.venue}</p>
+      <div className="abstract">
+        <span>Abstract</span>
+        <p>{paper.abstract}</p>
+      </div>
+      <div className="paper-links">
+        <a href={paper.scholar} target="_blank" rel="noreferrer">
+          Google Scholar <Arrow />
+        </a>
+        <a href={paper.paper} target="_blank" rel="noreferrer">
+          Paper <Arrow />
+        </a>
+        {paper.code && (
+          <a className="code-link" href={paper.code} target="_blank" rel="noreferrer">
+            Open-source code <Arrow />
+          </a>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function PublicationGroup({
+  index,
+  title,
+  description,
+  papers,
+}: {
+  index: string;
+  title: string;
+  description: string;
+  papers: Paper[];
+}) {
+  return (
+    <div className="publication-group">
+      <div className="group-heading">
+        <p>{index}</p>
+        <div>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+        <span>{papers.length} papers</span>
+      </div>
+      <div className="paper-grid">
+        {papers.map((paper) => (
+          <PaperCard key={paper.title} paper={paper} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function Home() {
@@ -62,202 +197,189 @@ export default function Home() {
     <main>
       <header className="topbar">
         <a className="brand" href="#about" aria-label="Qizhe Li 首页">
-          Qizhe<span>Li</span>
+          Qizhe Li
         </a>
         <nav className="tabs" aria-label="页面导航">
-          <a className="active" href="#about">About</a>
+          <a href="#about">About</a>
           <a href="#research">Research</a>
           <a href="#publications">Publications</a>
-          <a href="#demos">Demos</a>
-          <a href="#contact">Contact</a>
+          <a href="#background">Background</a>
         </nav>
-        <div className="top-links">
-          <a href={scholarUrl} target="_blank" rel="noreferrer" aria-label="Google Scholar">
-            Scholar
-          </a>
-          <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub">
-            GitHub
-          </a>
-        </div>
+        <VisitorCounter />
       </header>
 
       <section className="hero" id="about">
-        <div className="hero-glow glow-one" aria-hidden="true" />
-        <div className="hero-glow glow-two" aria-hidden="true" />
         <div className="hero-copy">
-          <p className="hello"><span>✦</span> Hello, I&apos;m</p>
-          <h1>
-            Qizhe <em>Li</em>
-          </h1>
-          <p className="role">AI RESEARCHER · INTELLIGENT AGENTS</p>
+          <p className="eyebrow">QIZHE LI · 李启哲</p>
+          <h1>Building trustworthy intelligence for complex systems.</h1>
+          <p className="lead">
+            I am a Ph.D. student in Computer and Information Engineering at
+            The Chinese University of Hong Kong, Shenzhen.
+          </p>
           <p className="bio">
-            我的研究聚焦于<span>个性化智能体</span>、<span>通信智能体</span>与
-            <span>智能科研基础设施</span>。我希望让 AI 不仅能回答问题，更能理解人、
-            可靠推理，并在真实世界中持续协作。
+            My research sits at the intersection of trustworthy learning and
+            intelligent networks. I began with uncertainty quantification,
+            surrogate modeling, and global sensitivity analysis; I now build
+            data-, knowledge-, and agent-driven methods for diagnosing complex
+            mobile networks.
           </p>
           <div className="hero-actions">
-            <a className="button primary" href="#research">
-              Explore my research <span aria-hidden="true">↓</span>
+            <a className="button primary" href="#publications">
+              Explore publications
             </a>
             <a className="button secondary" href={scholarUrl} target="_blank" rel="noreferrer">
-              Google Scholar <ExternalArrow />
+              Google Scholar <Arrow />
+            </a>
+            <a className="text-button" href={githubUrl} target="_blank" rel="noreferrer">
+              GitHub <Arrow />
             </a>
           </div>
-          <div className="mini-stats" aria-label="研究关键词">
-            <div><strong>03</strong><span>Research themes</span></div>
-            <div><strong>AI</strong><span>Agents &amp; systems</span></div>
-            <div><strong>∞</strong><span>Curiosity</span></div>
-          </div>
         </div>
-
-        <div className="portrait-wrap">
-          <div className="portrait-frame">
-            <img
-              src="/profile.jpg"
-              alt="李启哲的生活照"
-              width="1296"
-              height="1345"
-            />
+        <div className="portrait-column">
+          <div className="portrait">
+            <img src="/profile.jpg" alt="Qizhe Li" width="1296" height="1345" />
           </div>
-          <div className="portrait-sticker sticker-top">
-            <span>NOW</span>
-            <strong>Exploring agents</strong>
-          </div>
-          <div className="portrait-sticker sticker-bottom">
-            <span className="pulse" aria-hidden="true" />
-            Open to collaboration
-          </div>
-          <span className="doodle doodle-one" aria-hidden="true">✦</span>
-          <span className="doodle doodle-two" aria-hidden="true">✿</span>
+          <p>Ph.D. Student · CUHK-Shenzhen</p>
         </div>
       </section>
 
       <section className="section research-section" id="research">
-        <div className="section-intro">
-          <p className="section-kicker">01 · CURRENT RESEARCH</p>
-          <h2>
-            Questions I&apos;m
-            <br />
-            <em>thinking about</em>
-          </h2>
+        <div className="section-heading">
+          <p className="eyebrow">RESEARCH</p>
+          <h2>Two connected research directions</h2>
           <p>
-            从理解个体到服务复杂系统，我关注智能体如何在长期、开放且高要求的环境中工作。
+            From characterizing uncertainty in engineered systems to building
+            reliable intelligence for real-world communication networks.
           </p>
         </div>
-        <div className="research-grid">
-          {researchAreas.map((area, index) => (
-            <article className={`research-card card-${index + 1}`} key={area.title}>
-              <div className="card-top">
-                <span className="research-icon" aria-hidden="true">{area.icon}</span>
-                <span className="card-number">0{index + 1}</span>
-              </div>
-              <h3>{area.title}</h3>
-              <p className="cn-title">{area.cn}</p>
-              <p className="description">{area.description}</p>
-              <div className="tag-list">
-                {area.tags.map((tag) => <span key={tag}>{tag}</span>)}
-              </div>
-            </article>
-          ))}
+        <div className="focus-grid">
+          <article className="focus-card">
+            <span>01</span>
+            <h3>Uncertainty Quantification</h3>
+            <p>
+              Data-driven surrogate models, global sensitivity analysis, and
+              efficient optimization for complex systems with limited or
+              correlated observations.
+            </p>
+            <div>
+              <span>Surrogate modeling</span>
+              <span>Sensitivity analysis</span>
+              <span>Global optimization</span>
+            </div>
+          </article>
+          <article className="focus-card lavender">
+            <span>02</span>
+            <h3>AI for Networks</h3>
+            <p>
+              Label-efficient, knowledge-guided, and agentic methods that make
+              mobile-network diagnosis more accurate, explainable, and useful
+              in operation.
+            </p>
+            <div>
+              <span>QoE diagnosis</span>
+              <span>Agentic reasoning</span>
+              <span>Data + knowledge</span>
+            </div>
+          </article>
         </div>
       </section>
 
       <section className="section publications-section" id="publications">
-        <div className="publication-shell">
-          <div className="section-intro compact">
-            <p className="section-kicker">02 · PUBLICATIONS</p>
-            <h2>Published work</h2>
-            <p>
-              完整论文、引用数据与最新发表成果可在我的 Google Scholar 页面查看。
-            </p>
-            <a className="text-link" href={scholarUrl} target="_blank" rel="noreferrer">
-              View all on Google Scholar <ExternalArrow />
-            </a>
+        <div className="section-heading publication-heading">
+          <div>
+            <p className="eyebrow">SELECTED PUBLICATIONS</p>
+            <h2>Research, organized by field</h2>
           </div>
-          <a
-            className="scholar-card"
-            href={scholarUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="打开李启哲的 Google Scholar 主页"
-          >
-            <div className="scholar-orbit" aria-hidden="true">
-              <span>G</span>
-            </div>
-            <div>
-              <p>GOOGLE SCHOLAR PROFILE</p>
-              <h3>论文列表与引用</h3>
-              <span>scholar.google.com</span>
-            </div>
-            <ExternalArrow />
+          <a href={scholarUrl} target="_blank" rel="noreferrer">
+            Complete profile on Google Scholar <Arrow />
           </a>
         </div>
-        <div className="publication-note">
-          <span aria-hidden="true">✦</span>
+        <PublicationGroup
+          index="01"
+          title="Uncertainty Quantification"
+          description="Efficient models and analyses for uncertainty, sensitivity, and optimization."
+          papers={uncertaintyPapers}
+        />
+        <PublicationGroup
+          index="02"
+          title="AI for Networks"
+          description="Learning and reasoning systems for explainable network intelligence."
+          papers={networkPapers}
+        />
+      </section>
+
+      <section className="section open-section">
+        <div>
+          <p className="eyebrow">OPEN RESEARCH</p>
+          <h2>DK-Root is available on GitHub.</h2>
           <p>
-            论文卡片区域已准备好。下一步可根据你提供的代表作清单，添加论文标题、作者、
-            venue、PDF、代码与项目主页。
+            The public repository contains the implementation of our joint
+            data-and-knowledge-driven framework for mobile-network QoE
+            root-cause analysis.
           </p>
         </div>
+        <a
+          className="button primary"
+          href="https://github.com/LQZZZZZZ/DK_Root"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View source code <Arrow />
+        </a>
       </section>
 
-      <section className="section demos-section" id="demos">
-        <div className="section-intro demo-intro">
-          <p className="section-kicker">03 · RESEARCH DEMOS</p>
-          <h2>
-            Research,
-            <br />
-            <em>in motion</em>
-          </h2>
-          <p>用原型和视频展示研究如何从一个想法变成可体验、可验证的系统。</p>
+      <section className="section background-section" id="background">
+        <div className="section-heading">
+          <p className="eyebrow">BACKGROUND</p>
+          <h2>Education &amp; experience</h2>
         </div>
-        <div className="demo-grid">
-          {demos.map((demo) => (
-            <article className={`demo-card demo-${demo.color}`} key={demo.label}>
-              <div className="demo-visual">
-                <div className="demo-ui">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <div className="play" aria-hidden="true"><i /></div>
-                <span className="coming-soon">VIDEO COMING SOON</span>
-              </div>
-              <div className="demo-copy">
-                <p>{demo.label}</p>
-                <h3>{demo.title}</h3>
-                <span>{demo.cn}</span>
-                <p className="description">{demo.description}</p>
-              </div>
-            </article>
-          ))}
+        <div className="timeline">
+          <article>
+            <span>2024 — Present</span>
+            <div>
+              <h3>Ph.D. in Computer and Information Engineering</h3>
+              <p>The Chinese University of Hong Kong, Shenzhen</p>
+            </div>
+          </article>
+          <article>
+            <span>2023 — 2024</span>
+            <div>
+              <h3>Financial Technology Manager</h3>
+              <p>ICBC Software Development Center, Guangzhou</p>
+            </div>
+          </article>
+          <article>
+            <span>2020 — 2023</span>
+            <div>
+              <h3>M.Sc. in Mathematics</h3>
+              <p>Sun Yat-sen University</p>
+            </div>
+          </article>
+          <article>
+            <span>2015 — 2019</span>
+            <div>
+              <h3>B.Sc. in Information and Computing Science</h3>
+              <p>East China Jiaotong University</p>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section className="contact-section" id="contact">
-        <div className="contact-flower" aria-hidden="true">✿</div>
-        <p className="section-kicker">04 · LET&apos;S CONNECT</p>
-        <h2>
-          Curious minds create
-          <br />
-          <em>better futures.</em>
-        </h2>
-        <p>
-          欢迎围绕智能体、通信 AI 与科研基础设施交流想法、合作研究或共同构建 Demo。
-        </p>
-        <div className="contact-actions">
-          <a className="button dark" href={githubUrl} target="_blank" rel="noreferrer">
-            Follow on GitHub <ExternalArrow />
-          </a>
-          <a className="button light" href={scholarUrl} target="_blank" rel="noreferrer">
-            Google Scholar <ExternalArrow />
-          </a>
+      <footer>
+        <div>
+          <p>Qizhe Li · 李启哲</p>
+          <span>Trustworthy learning · Intelligent networks</span>
         </div>
-        <footer>
-          <span>QIZHE LI · ACADEMIC PROFILE</span>
+        <div className="footer-links">
+          <a href={scholarUrl} target="_blank" rel="noreferrer">
+            Scholar
+          </a>
+          <a href={githubUrl} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
           <a href="#about">Back to top ↑</a>
-        </footer>
-      </section>
+        </div>
+      </footer>
     </main>
   );
 }

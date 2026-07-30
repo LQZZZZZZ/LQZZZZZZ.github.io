@@ -1,25 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lqzzzzzz.github.io"),
-  title: "Qizhe Li 李启哲 · AI Researcher",
+  title: "Qizhe Li 李启哲 · Trustworthy AI & Intelligent Networks",
   description:
-    "李启哲的个人学术主页：个性化智能体、通信智能体、科研基础设施、代表论文与研究 Demo。",
+    "Qizhe Li's academic homepage: uncertainty quantification, AI for networks, publications, and open research.",
   openGraph: {
-    title: "Qizhe Li · AI Researcher",
-    description: "Intelligent agents · Telecom · AI for Science",
+    title: "Qizhe Li · Trustworthy AI & Intelligent Networks",
+    description: "Uncertainty quantification · AI for networks · Open research",
     type: "website",
     images: [
       {
@@ -32,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Qizhe Li · AI Researcher",
-    description: "Intelligent agents · Telecom · AI for Science",
+    title: "Qizhe Li · Trustworthy AI & Intelligent Networks",
+    description: "Uncertainty quantification · AI for networks · Open research",
     images: ["https://lqzzzzzz.github.io/og.png"],
   },
 };
@@ -45,11 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
