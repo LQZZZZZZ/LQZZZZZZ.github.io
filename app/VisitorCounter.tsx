@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-const endpoint = "https://visitor.6developer.com/visit";
+const endpoint =
+  "https://api.counterapi.dev/v1/lqzzzzzz-github-io/visitors";
 const domain = "lqzzzzzz.github.io";
 const storageKey = "qizhe-li-visitor-counted-v1";
 
@@ -18,26 +19,18 @@ export default function VisitorCounter() {
 
     async function loadCount() {
       try {
-        const response = await fetch(
-          shouldCount ? endpoint : `${endpoint}?domain=${encodeURIComponent(domain)}`,
-          {
-            method: shouldCount ? "POST" : "GET",
-            headers: shouldCount ? { "Content-Type": "application/json" } : undefined,
-            body: shouldCount
-              ? JSON.stringify({ domain, page_path: "/" })
-              : undefined,
-            signal: controller.signal,
-          },
-        );
+        const response = await fetch(shouldCount ? `${endpoint}/up` : endpoint, {
+          signal: controller.signal,
+        });
 
         if (!response.ok) throw new Error("Visitor counter unavailable");
 
-        const data = (await response.json()) as { totalCount?: number };
-        if (typeof data.totalCount !== "number") {
+        const data = (await response.json()) as { count?: number };
+        if (typeof data.count !== "number") {
           throw new Error("Visitor count missing");
         }
 
-        setCount(data.totalCount);
+        setCount(data.count);
         if (shouldCount) window.localStorage.setItem(storageKey, "yes");
       } catch (error) {
         if ((error as Error).name !== "AbortError") setAvailable(false);

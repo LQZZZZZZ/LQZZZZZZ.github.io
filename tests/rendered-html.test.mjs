@@ -57,7 +57,9 @@ test("visitor counter has a privacy-minimal fallback", async () => {
   const counter = await readFile(new URL("app/VisitorCounter.tsx", root), "utf8");
 
   assert.match(counter, /lqzzzzzz\.github\.io/);
-  assert.match(counter, /page_path: "\/"/);
+  assert.match(counter, /counterapi\.dev\/v1\/lqzzzzzz-github-io\/visitors/);
+  assert.match(counter, /endpoint\}\/up/);
+  assert.match(counter, /data\.count/);
   assert.match(counter, /Welcome, visitor No\./);
   assert.match(counter, /Welcome/);
   assert.doesNotMatch(counter, /document\.referrer|search_query|email|timezone/);
