@@ -113,7 +113,7 @@ test("visitor counter has a privacy-minimal fallback", async () => {
   assert.doesNotMatch(counter, /document\.referrer|search_query|email|timezone/);
 });
 
-test("design uses only Comic Sans MS and responsive layouts", async () => {
+test("design uses Arial throughout and responsive layouts", async () => {
   const [css, layout, notFound] = await Promise.all([
     readFile(new URL("app/globals.css", root), "utf8"),
     readFile(new URL("app/layout.tsx", root), "utf8"),
@@ -123,10 +123,10 @@ test("design uses only Comic Sans MS and responsive layouts", async () => {
   assert.match(css, /--pink:/);
   assert.match(css, /--lavender:/);
   assert.match(css, /@media \(max-width: 620px\)/);
-  assert.match(css, /"Comic Sans MS"/);
+  assert.match(css, /font-family: Arial, Helvetica, sans-serif/);
   assert.match(css, /\.timeline-track::before/);
   assert.doesNotMatch(css, /scroll-snap-type: x mandatory/);
-  assert.doesNotMatch(css, /Times New Roman|Georgia|Arial|Helvetica/);
+  assert.doesNotMatch(css, /Comic Sans|Times New Roman|Georgia/);
   assert.doesNotMatch(layout, /next\/font|Geist_Mono|Georgia|Times New Roman/);
   assert.match(notFound, /not-found-page/);
 });
