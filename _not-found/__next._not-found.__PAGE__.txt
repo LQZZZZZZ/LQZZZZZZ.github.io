@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
 2:I[484,[],"OutletBoundary"]
 3:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"not-found-page","children":[["$","p",null,{"className":"eyebrow","children":"404 · Page not found"}],["$","h1",null,{"children":"This page wandered off."}],["$","p",null,{"children":"The address may have changed, or the page may no longer be part of this research notebook."}],["$","a",null,{"href":"/","children":"Return to the academic profile →"}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YtssatN09NLY0xuAUkkoI"}
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"not-found-page","children":[["$","p",null,{"className":"eyebrow","children":"404 · Page not found"}],["$","h1",null,{"children":"This page wandered off."}],["$","p",null,{"children":"The address may have changed, or the page may no longer be part of this research notebook."}],["$","a",null,{"href":"/","children":"Return to the academic profile →"}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"RJ8Tg1V7qF8mbqlmtWQGB"}
 4:null
