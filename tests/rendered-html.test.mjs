@@ -11,6 +11,10 @@ test("homepage joins profile and background while keeping research threads verti
   ]);
 
   assert.match(page, /Ph\.D\. Student in Computer and Information Engineering/);
+  assert.match(page, /Visiting Student/);
+  assert.match(page, /Shenzhen Research Institute of Big Data/);
+  assert.match(page, /My research focuses on AI for network\s+systems and uncertainty quantification/);
+  assert.doesNotMatch(page, /I study how reliable learning and reasoning/);
   assert.match(page, /profile-history/);
   assert.match(page, /research-threads/);
   assert.match(page, /Uncertainty Quantification/);
@@ -54,7 +58,10 @@ test("research timeline is interactive, illustrated, and reverse chronological",
 });
 
 test("Everything is Research separates tools and private prototypes", async () => {
-  const page = await readFile(new URL("app/everything/page.tsx", root), "utf8");
+  const [page, config] = await Promise.all([
+    readFile(new URL("app/everything/page.tsx", root), "utf8"),
+    readFile(new URL("next.config.ts", root), "utf8"),
+  ]);
 
   assert.match(page, /Daily Literature Agent/);
   assert.match(page, /AutoPaperReporter/);
@@ -64,6 +71,7 @@ test("Everything is Research separates tools and private prototypes", async () =
   assert.match(page, /Ball quality/);
   assert.match(page, /Private prototype/);
   assert.doesNotMatch(page, /github\.com\/LQZZZZZZ\/Tennis/);
+  assert.match(config, /trailingSlash: process\.env\.GITHUB_PAGES === "1"/);
 });
 
 test("visitor counter has a privacy-minimal fallback", async () => {

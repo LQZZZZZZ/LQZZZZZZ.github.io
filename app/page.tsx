@@ -22,14 +22,10 @@ export default function Home() {
               Ph.D. Student in Computer and Information Engineering
             </p>
             <p className="lead">
-              I study how reliable learning and reasoning can help us understand
-              and operate complex systems.
-            </p>
-            <p className="bio">
-              My work began with uncertainty quantification, surrogate modeling,
-              and global sensitivity analysis. It now extends to data-,
-              knowledge-, and agent-driven methods for explainable diagnosis in
-              mobile networks.
+              I am a Ph.D. student at The Chinese University of Hong Kong,
+              Shenzhen, and a visiting student at the Shenzhen Research
+              Institute of Big Data. My research focuses on AI for network
+              systems and uncertainty quantification.
             </p>
             <div className="profile-links">
               <a href={scholarUrl} target="_blank" rel="noreferrer">
@@ -57,6 +53,13 @@ export default function Home() {
               <div>
                 <strong>Ph.D., Computer and Information Engineering</strong>
                 <span>The Chinese University of Hong Kong, Shenzhen</span>
+              </div>
+            </li>
+            <li>
+              <time>Since 2024</time>
+              <div>
+                <strong>Visiting Student</strong>
+                <span>Shenzhen Research Institute of Big Data</span>
               </div>
             </li>
             <li>
