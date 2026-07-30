@@ -13,7 +13,15 @@ test("homepage joins profile and background while keeping research threads verti
   assert.match(page, /Ph\.D\. Student in Computer and Information Engineering/);
   assert.match(page, /Visiting Student/);
   assert.match(page, /Shenzhen Research Institute of Big Data/);
-  assert.match(page, /My research focuses on AI for network\s+systems and uncertainty quantification/);
+  assert.match(page, /CIE Ph\.D\. student at CUHK-Shenzhen/);
+  assert.match(page, /occasionally dreams of\s+doing absolutely nothing/);
+  assert.match(page, /qizheli@link\.cuhk\.edu\.cn/);
+  assert.match(page, /AI for Wireless Networking/);
+  assert.equal(
+    (page.match(/className="institution-logo/g) ?? []).length,
+    5,
+    "every institution must have a logo",
+  );
   assert.doesNotMatch(page, /I study how reliable learning and reasoning/);
   assert.match(page, /profile-history/);
   assert.match(page, /research-threads/);
