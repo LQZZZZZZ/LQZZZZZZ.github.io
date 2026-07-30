@@ -4,7 +4,7 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-test("homepage joins profile and background while keeping research threads vertical", async () => {
+test("homepage joins profile and background with one research section", async () => {
   const [page, data] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("app/research-data.ts", root), "utf8"),
@@ -24,23 +24,42 @@ test("homepage joins profile and background while keeping research threads verti
   );
   assert.doesNotMatch(page, /I study how reliable learning and reasoning/);
   assert.match(page, /profile-history/);
-  assert.match(page, /research-threads/);
-  assert.match(page, /Uncertainty Quantification/);
-  assert.match(page, /AI for Networks/);
+  assert.doesNotMatch(page, /research-threads/);
+  assert.match(page, /<h2>Selected publications<\/h2>/);
+  assert.equal((page.match(/id="publications"/g) ?? []).length, 1);
+  assert.match(data, /Uncertainty Quantification/);
+  assert.match(data, /AI for Networks/);
   assert.match(page, /Google Scholar/);
   assert.doesNotMatch(page, /DK-Root is available on GitHub/);
   assert.match(data, /github\.com\/LQZZZZZZ\/DK_Root/);
 });
 
-test("research timeline is interactive, illustrated, and reverse chronological", async () => {
+test("patents are presented separately with verified publication records", async () => {
+  const [page, header] = await Promise.all([
+    readFile(new URL("app/page.tsx", root), "utf8"),
+    readFile(new URL("app/SiteHeader.tsx", root), "utf8"),
+  ]);
+
+  assert.match(header, />Publications</);
+  assert.match(header, />Patents</);
+  assert.doesNotMatch(header, />Timeline</);
+  assert.match(page, /id="patents"/);
+  assert.equal((page.match(/status: "(?:Filed|Granted)"/g) ?? []).length, 4);
+  assert.match(page, /ZL202511903863\.4/);
+  assert.match(page, /CN121357036B/);
+  assert.match(page, /CN116451570B/);
+  assert.match(page, /CN116562124B/);
+  assert.doesNotMatch(page, /CN111046606A|CN106372278A/);
+});
+
+test("research timeline is vertical, filterable, illustrated, and reverse chronological", async () => {
   const [timeline, data] = await Promise.all([
     readFile(new URL("app/ResearchTimeline.tsx", root), "utf8"),
     readFile(new URL("app/research-data.ts", root), "utf8"),
   ]);
 
-  assert.match(timeline, /onPointerDown/);
-  assert.match(timeline, /onPointerMove/);
-  assert.match(timeline, /ArrowRight/);
+  assert.doesNotMatch(timeline, /onPointerDown|onPointerMove|ArrowRight/);
+  assert.match(timeline, /role="list"/);
   assert.match(timeline, /AI for Networks/);
   assert.match(timeline, /Uncertainty Quantification/);
   assert.match(data, /\/research\/dk-root-overview\.png/);
@@ -105,7 +124,8 @@ test("design uses only Comic Sans MS and responsive layouts", async () => {
   assert.match(css, /--lavender:/);
   assert.match(css, /@media \(max-width: 620px\)/);
   assert.match(css, /"Comic Sans MS"/);
-  assert.match(css, /scroll-snap-type: x mandatory/);
+  assert.match(css, /\.timeline-track::before/);
+  assert.doesNotMatch(css, /scroll-snap-type: x mandatory/);
   assert.doesNotMatch(css, /Times New Roman|Georgia|Arial|Helvetica/);
   assert.doesNotMatch(layout, /next\/font|Geist_Mono|Georgia|Times New Roman/);
   assert.match(notFound, /not-found-page/);

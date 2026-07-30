@@ -4,6 +4,48 @@ import { scholarUrl } from "./research-data";
 
 const githubUrl = "https://github.com/LQZZZZZZ";
 
+const patents = [
+  {
+    title:
+      "LLM-Agent-Based Root-Cause Reasoning for User-Experience Anomalies in Communication Networks",
+    inventors: "Qizhe Li, Guangxu Zhu, et al.",
+    number: "Invention patent application",
+    status: "Filed",
+    summary:
+      "An agent-based reasoning method that uses large language models to trace the root causes of user-experience anomalies in communication networks.",
+  },
+  {
+    title:
+      "Training Method, Apparatus, Device, and Medium for a Network Poor-Quality Root-Cause Identification Model",
+    inventors: "Qizhe Li, Haolong Chen, et al.",
+    number: "ZL202511903863.4 · CN121357036B",
+    status: "Granted",
+    summary:
+      "A training framework for identifying the root causes of poor network quality from operational network data and structured diagnostic knowledge.",
+    link: "https://patents.google.com/patent/CN121357036B/en",
+  },
+  {
+    title:
+      "Method and Apparatus for Uncertainty Propagation of Radome Electromagnetic Performance",
+    inventors: "Hanyan Huang, Qizhe Li, et al.",
+    number: "CN116451570B",
+    status: "Granted",
+    summary:
+      "A data-driven method for propagating input uncertainty through radome models and efficiently estimating uncertainty in electromagnetic performance.",
+    link: "https://patents.google.com/patent/CN116451570B/en",
+  },
+  {
+    title:
+      "Method and Apparatus for Predicting the Effects of Ablation on the Electromagnetic Performance of High-Speed Aircraft Radomes",
+    inventors: "Hanyan Huang, Shan Xie, Zecong Liu, Qizhe Li, et al.",
+    number: "CN116562124B",
+    status: "Granted",
+    summary:
+      "A multi-fidelity surrogate-modeling approach that combines ablation-stage, transmission-stage, and system-level data for rapid electromagnetic-performance prediction.",
+    link: "https://patents.google.com/patent/CN116562124B/en",
+  },
+];
+
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
@@ -121,66 +163,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section research-section" id="research">
-        <div className="section-heading">
-          <p className="eyebrow">Research threads</p>
-          <h2>Two questions, one evolving trajectory</h2>
-          <p>
-            The two directions are connected by a common concern: how to learn
-            reliably when data, labels, and prior knowledge are incomplete.
-          </p>
-        </div>
-        <div className="research-threads">
-          <article>
-            <div className="thread-index">
-              <span>01</span>
-              <small>Current</small>
-            </div>
-            <div>
-              <h3>AI for Networks</h3>
-              <p>
-                Label-efficient, knowledge-guided, and agentic methods for
-                accurate and explainable diagnosis in operational mobile
-                networks.
-              </p>
-              <ul>
-                <li>QoE diagnosis</li>
-                <li>Agentic reasoning</li>
-                <li>Data + knowledge</li>
-              </ul>
-            </div>
-          </article>
-          <article>
-            <div className="thread-index">
-              <span>02</span>
-              <small>Foundation</small>
-            </div>
-            <div>
-              <h3>Uncertainty Quantification</h3>
-              <p>
-                Data-driven surrogate modeling, global sensitivity analysis,
-                and efficient optimization for engineered systems with limited
-                or correlated observations.
-              </p>
-              <ul>
-                <li>Surrogate modeling</li>
-                <li>Sensitivity analysis</li>
-                <li>Global optimization</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section className="section timeline-section" id="timeline">
+      <section className="section timeline-section" id="publications">
         <div className="timeline-heading">
           <div className="section-heading">
-            <p className="eyebrow">Research timeline</p>
-            <h2>Work in reverse chronological order</h2>
+            <p className="eyebrow">Publications</p>
+            <h2>Selected publications</h2>
             <p>
-              Drag the timeline to move through the work. Overview figures are
-              reproduced from the corresponding papers when source assets are
-              available.
+              Research in AI for wireless networking and uncertainty
+              quantification, arranged from newest to oldest.
             </p>
           </div>
           <a href={scholarUrl} target="_blank" rel="noreferrer">
@@ -188,6 +178,38 @@ export default function Home() {
           </a>
         </div>
         <ResearchTimeline />
+      </section>
+
+      <section className="section patent-section" id="patents">
+        <div className="section-heading">
+          <p className="eyebrow">Patents</p>
+          <h2>Invented with collaborators</h2>
+          <p>
+            Patents spanning intelligent network diagnosis and uncertainty-aware
+            electromagnetic modeling.
+          </p>
+        </div>
+        <ol className="patent-list">
+          {patents.map((patent, index) => (
+            <li key={patent.title}>
+              <div className="patent-number">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <small>{patent.status}</small>
+              </div>
+              <div className="patent-copy">
+                <h3>{patent.title}</h3>
+                <p className="patent-inventors">{patent.inventors}</p>
+                <p className="patent-id">{patent.number}</p>
+                <p>{patent.summary}</p>
+                {patent.link && (
+                  <a href={patent.link} target="_blank" rel="noreferrer">
+                    Patent record <Arrow />
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="everything-teaser">
