@@ -1,7 +1,7 @@
 import VisitorCounter from "./VisitorCounter";
 
 const scholarUrl =
-  "https://scholar.google.com/citations?user=2XdjuasAAAAJ&hl=zh-CN";
+  "https://scholar.google.com/citations?user=2XdjuasAAAAJ&hl=en";
 const githubUrl = "https://github.com/LQZZZZZZ";
 
 type Paper = {
@@ -27,7 +27,7 @@ const uncertaintyPapers: Paper[] = [
     abstract:
       "This work revises the expected-improvement criterion to better balance exploration and exploitation in Kriging-based optimization. The resulting REGO algorithm uses sample-distribution information to avoid premature convergence and demonstrates robust global-search performance on numerical problems and an airfoil design case.",
     scholar:
-      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:d1gkVwhDpl0C",
+      "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:d1gkVwhDpl0C",
     paper: "https://doi.org/10.1080/0305215X.2023.2170367",
   },
   {
@@ -40,7 +40,7 @@ const uncertaintyPapers: Paper[] = [
     abstract:
       "A sequential Morris framework is introduced to reduce the cost of sample-based sensitivity analysis. Progressive Latin hypercube sampling preserves space-filling properties as new starting points are added, while an adaptive stopping rule avoids unnecessary model evaluations.",
     scholar:
-      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:u-x6o8ySG0sC",
+      "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:u-x6o8ySG0sC",
     paper: "https://doi.org/10.1615/Int.J.UncertaintyQuantification.2022044335",
   },
   {
@@ -52,7 +52,7 @@ const uncertaintyPapers: Paper[] = [
     abstract:
       "This paper develops a data-driven polynomial-chaos Kriging method for systems with correlated inputs. Adaptive Lasso selects a compact polynomial basis before it is embedded in a Kriging model, improving global approximation accuracy and sample efficiency across changing correlation structures.",
     scholar:
-      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:qjMakFHDy7sC",
+      "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:qjMakFHDy7sC",
     paper: "https://doi.org/10.1145/3644523.3644637",
   },
   {
@@ -65,7 +65,7 @@ const uncertaintyPapers: Paper[] = [
     abstract:
       "A global sensitivity-analysis workflow is built on arbitrary polynomial chaos expansion for cases where input distributions are only partially known. Sobol indices are estimated through the learned surrogate and Monte Carlo sampling, extending sensitivity analysis to more realistic data-limited settings.",
     scholar:
-      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:9yKSN-GCB0IC",
+      "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:9yKSN-GCB0IC",
     paper: "https://doi.org/10.1109/ICSRS56243.2022.10067257",
   },
 ];
@@ -82,7 +82,7 @@ const networkPapers: Paper[] = [
     abstract:
       "DK-Root combines weak operational rules with scarce expert labels for mobile-network QoE diagnosis. Contrastive pretraining mitigates rule noise, class-conditional diffusion supplies task-faithful augmentation, and expert-guided fine-tuning achieves strong results on real operator data with substantially fewer annotations.",
     scholar:
-      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:IjCSPb-OGe4C",
+      "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:IjCSPb-OGe4C",
     paper: "https://doi.org/10.1109/TON.2026.3705395",
     code: "https://github.com/LQZZZZZZ/DK_Root",
   },
@@ -96,7 +96,7 @@ const networkPapers: Paper[] = [
     abstract:
       "QoEReasoner is an end-to-end agentic system for explainable RAN diagnosis. Deterministic tools convert KPIs into evidence, a domain knowledge base constrains causal propagation, and a stateful planner coordinates anomaly detection and root localization, improving accuracy while reducing diagnostic time.",
     scholar:
-      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:W7OEmFMy1HYC",
+      "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:W7OEmFMy1HYC",
     paper: "https://arxiv.org/abs/2606.01925",
   },
   {
@@ -109,7 +109,7 @@ const networkPapers: Paper[] = [
     abstract:
       "SemiRoot addresses label scarcity in mobile-network diagnosis through a two-stage semi-supervised framework. Rule-guided contrastive learning first structures the representation space, after which a small set of expert labels calibrates decision boundaries for label-efficient root-cause analysis.",
     scholar:
-      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:YsMSGLbcyi4C",
+      "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:YsMSGLbcyi4C",
     paper: "https://doi.org/10.1109/ICCWorkshops63917.2026.11586658",
   },
   {
@@ -122,7 +122,7 @@ const networkPapers: Paper[] = [
     abstract:
       "S-PPR augments Personalized PageRank with semantic information for academic collaborator discovery. It combines co-authorship frequency with title-embedding similarity in both teleportation and graph transitions, producing recommendations that better align with a researcher's interests.",
     scholar:
-      "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:Y0pCki6q_DkC",
+      "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:Y0pCki6q_DkC",
     paper: "https://doi.org/10.1109/ACAI68217.2025.11406693",
   },
 ];
