@@ -7,7 +7,8 @@ const root = new URL("../", import.meta.url);
 test("homepage includes the core academic sections and verified links", async () => {
   const page = await readFile(new URL("app/page.tsx", root), "utf8");
 
-  assert.match(page, /Building trustworthy intelligence for complex systems/);
+  assert.match(page, /Ph\.D\. Student in Computer and Information Engineering/);
+  assert.doesNotMatch(page, /Building trustworthy intelligence for complex systems/);
   assert.match(page, /Uncertainty Quantification/);
   assert.match(page, /AI for Networks/);
   assert.match(page, /DK-Root/);
@@ -22,12 +23,12 @@ test("visitor counter has a privacy-minimal fallback", async () => {
 
   assert.match(counter, /lqzzzzzz\.github\.io/);
   assert.match(counter, /page_path: "\/"/);
-  assert.match(counter, /欢迎第/);
-  assert.match(counter, /欢迎来访/);
+  assert.match(counter, /Welcome, visitor No\./);
+  assert.match(counter, /Welcome/);
   assert.doesNotMatch(counter, /document\.referrer|search_query|email|timezone/);
 });
 
-test("design uses one type family and responsive layouts", async () => {
+test("design uses exactly two requested type families and responsive layouts", async () => {
   const [css, layout] = await Promise.all([
     readFile(new URL("app/globals.css", root), "utf8"),
     readFile(new URL("app/layout.tsx", root), "utf8"),
@@ -36,5 +37,7 @@ test("design uses one type family and responsive layouts", async () => {
   assert.match(css, /--pink:/);
   assert.match(css, /--lavender:/);
   assert.match(css, /@media \(max-width: 620px\)/);
+  assert.match(css, /"Times New Roman"/);
+  assert.match(css, /"Comic Sans MS"/);
   assert.doesNotMatch(layout, /next\/font|Geist_Mono|Georgia|Times New Roman/);
 });

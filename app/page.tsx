@@ -196,10 +196,10 @@ export default function Home() {
   return (
     <main>
       <header className="topbar">
-        <a className="brand" href="#about" aria-label="Qizhe Li 首页">
+        <a className="brand" href="#about" aria-label="Qizhe Li homepage">
           Qizhe Li
         </a>
-        <nav className="tabs" aria-label="页面导航">
+        <nav className="tabs" aria-label="Page navigation">
           <a href="#about">About</a>
           <a href="#research">Research</a>
           <a href="#publications">Publications</a>
@@ -210,11 +210,14 @@ export default function Home() {
 
       <section className="hero" id="about">
         <div className="hero-copy">
-          <p className="eyebrow">QIZHE LI · 李启哲</p>
-          <h1>Building trustworthy intelligence for complex systems.</h1>
+          <p className="eyebrow">ACADEMIC PROFILE</p>
+          <h1>Qizhe Li</h1>
+          <p className="role-line">
+            Ph.D. Student in Computer and Information Engineering
+          </p>
           <p className="lead">
-            I am a Ph.D. student in Computer and Information Engineering at
-            The Chinese University of Hong Kong, Shenzhen.
+            I study how reliable learning and reasoning can help us understand
+            complex systems.
           </p>
           <p className="bio">
             My research sits at the intersection of trustworthy learning and
@@ -367,7 +370,7 @@ export default function Home() {
 
       <footer>
         <div>
-          <p>Qizhe Li · 李启哲</p>
+          <p>Qizhe Li</p>
           <span>Trustworthy learning · Intelligent networks</span>
         </div>
         <div className="footer-links">

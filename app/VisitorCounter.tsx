@@ -53,14 +53,15 @@ export default function VisitorCounter() {
       <span className="visitor-dot" aria-hidden="true" />
       {available ? (
         count === null ? (
-          <span>欢迎来访</span>
+          <span>Welcome</span>
         ) : (
           <span>
-            欢迎第 <strong>{count.toLocaleString("zh-CN")}</strong> 位来看我～
+            Welcome, visitor No.{" "}
+            <strong>{count.toLocaleString("en-US")}</strong>
           </span>
         )
       ) : (
-        <span>欢迎来访</span>
+        <span>Welcome</span>
       )}
     </div>
   );

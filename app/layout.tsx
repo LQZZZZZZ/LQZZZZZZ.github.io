@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lqzzzzzz.github.io"),
-  title: "Qizhe Li 李启哲 · Trustworthy AI & Intelligent Networks",
+  title: "Qizhe Li · Trustworthy AI & Intelligent Networks",
   description:
     "Qizhe Li's academic homepage: uncertainty quantification, AI for networks, publications, and open research.",
   openGraph: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://lqzzzzzz.github.io/og.png",
-        width: 1732,
+        width: 1731,
         height: 908,
         alt: "Qizhe Li academic profile",
       },

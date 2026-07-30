@@ -41,4 +41,4 @@ page path are sent; no name, email, referrer, or search query is submitted.
 
 The number is an approximate count of browsers, not a verified count of unique
 people. If the external service is unavailable, the card falls back to
-“欢迎来访” without affecting the rest of the page.
+“Welcome” without affecting the rest of the page.
