@@ -37,7 +37,7 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:W7OEmFMy1HYC",
     paper: "https://arxiv.org/abs/2606.01925",
-    image: "/research/qoe-reasoner-overview.svg",
+    image: "/research/qoe-reasoner-overview.png",
     imageAlt: "System overview of the QoEReasoner diagnostic framework",
     imageCaption: "System overview from the paper.",
   },
@@ -57,7 +57,7 @@ export const researchWorks: ResearchWork[] = [
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:IjCSPb-OGe4C",
     paper: "https://doi.org/10.1109/TON.2026.3705395",
     code: "https://github.com/LQZZZZZZ/DK_Root",
-    image: "/research/dk-root-overview.svg",
+    image: "/research/dk-root-overview.png",
     imageAlt: "Three-stage overview of the DK-Root framework",
     imageCaption: "Method overview from the paper.",
   },
@@ -75,7 +75,7 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:YsMSGLbcyi4C",
     paper: "https://doi.org/10.1109/ICCWorkshops63917.2026.11586658",
-    image: "/research/semiroot-overview.svg",
+    image: "/research/semiroot-overview.png",
     imageAlt: "Overview of the two-stage SemiRoot framework",
     imageCaption: "Framework overview from the paper.",
   },
@@ -93,7 +93,7 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:Y0pCki6q_DkC",
     paper: "https://doi.org/10.1109/ACAI68217.2025.11406693",
-    image: "/research/sppr-overview.svg",
+    image: "/research/sppr-overview.png",
     imageAlt: "Overview of the semantic-aware Personalized PageRank pipeline",
     imageCaption: "Algorithm overview from the paper.",
   },
@@ -111,7 +111,7 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:d1gkVwhDpl0C",
     paper: "https://doi.org/10.1080/0305215X.2023.2170367",
-    image: "/research/rego-method.svg",
+    image: "/research/rego-method.png",
     imageAlt: "Method sketch showing the exploration and exploitation balance in REGO",
     imageCaption: "Editorial method sketch based on the paper.",
   },
@@ -130,7 +130,7 @@ export const researchWorks: ResearchWork[] = [
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:u-x6o8ySG0sC",
     paper:
       "https://doi.org/10.1615/Int.J.UncertaintyQuantification.2022044335",
-    image: "/research/morris-method.svg",
+    image: "/research/morris-method.png",
     imageAlt: "Method sketch of progressive sampling and the Morris stopping criterion",
     imageCaption: "Editorial method sketch based on the paper.",
   },
@@ -148,7 +148,7 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:qjMakFHDy7sC",
     paper: "https://doi.org/10.1145/3644523.3644637",
-    image: "/research/pc-kriging-method.svg",
+    image: "/research/pc-kriging-method.png",
     imageAlt: "Method sketch of data-driven PC-Kriging with correlated inputs",
     imageCaption: "Editorial method sketch based on the paper.",
   },
@@ -166,7 +166,7 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:9yKSN-GCB0IC",
     paper: "https://doi.org/10.1109/ICSRS56243.2022.10067257",
-    image: "/research/apce-method.svg",
+    image: "/research/apce-method.png",
     imageAlt: "Method sketch of arbitrary polynomial chaos expansion for sensitivity analysis",
     imageCaption: "Editorial method sketch based on the paper.",
   },

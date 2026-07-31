@@ -145,6 +145,34 @@ h1 {
   max-width: 680px;
 }
 
+.profile-intro {
+  list-style: none;
+  margin: 1.65rem 0 0;
+  max-width: 700px;
+  padding: 0;
+}
+
+.profile-intro li {
+  border-top: 1px solid var(--line);
+  font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+  line-height: 1.55;
+  padding: 0.85rem 0 0.85rem 1.25rem;
+  position: relative;
+}
+
+.profile-intro li:last-child { border-bottom: 1px solid var(--line); }
+
+.profile-intro li::before {
+  background: var(--rose);
+  border-radius: 50%;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 1.45rem;
+  width: 5px;
+}
+
 .bio {
   color: var(--muted);
   font-size: 1.05rem;

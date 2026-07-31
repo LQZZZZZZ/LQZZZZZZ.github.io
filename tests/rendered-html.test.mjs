@@ -14,7 +14,11 @@ test("homepage is dedicated to profile and background", async () => {
   assert.match(page, /Visiting Student/);
   assert.match(page, /Shenzhen Research Institute of Big Data/);
   assert.match(page, /CIE Ph\.D\. student at CUHK-Shenzhen/);
-  assert.match(page, /occasionally dreams of\s+doing absolutely nothing/);
+  assert.match(page, /asking why things work\s+the way they do/);
+  assert.match(page, /playing tennis and photography/);
+  assert.match(page, /connect, exchange ideas, and collaborate/);
+  assert.match(page, /profile-intro/);
+  assert.doesNotMatch(page, /dreams of\s+doing absolutely nothing/);
   assert.match(page, /qizheli@link\.cuhk\.edu\.cn/);
   assert.match(page, /AI for Wireless Networking/);
   assert.equal(

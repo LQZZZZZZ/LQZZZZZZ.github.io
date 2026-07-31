@@ -20,13 +20,20 @@ export default function Home() {
             <p className="role-line">
               Ph.D. Student in Computer and Information Engineering
             </p>
-            <p className="lead">
-              I am currently a CIE Ph.D. student at CUHK-Shenzhen, mainly
-              exploring AI for user experience in wireless communications. I
-              am also the kind of Ph.D. student who occasionally dreams of
-              doing absolutely nothing. Collaborations and conversations are
-              always welcome.
-            </p>
+            <ul className="profile-intro">
+              <li>
+                I am currently a CIE Ph.D. student at CUHK-Shenzhen, exploring
+                AI for user experience in wireless communications.
+              </li>
+              <li>
+                I enjoy exploring unfamiliar ideas and asking why things work
+                the way they do.
+              </li>
+              <li>Outside research, I enjoy playing tennis and photography.</li>
+              <li>
+                I am always happy to connect, exchange ideas, and collaborate.
+              </li>
+            </ul>
             <div className="profile-links">
               <a href={scholarUrl} target="_blank" rel="noreferrer">
                 Google Scholar <Arrow />
