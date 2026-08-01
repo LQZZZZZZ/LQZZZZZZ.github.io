@@ -38,22 +38,30 @@ test("homepage is dedicated to profile and background", async () => {
 });
 
 test("top-level tabs lead to separate pages", async () => {
-  const [home, publications, patentPage, patentData, header] = await Promise.all([
+  const [home, publications, patentPage, patentData, notesPage, notesData, header] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("app/publications/page.tsx", root), "utf8"),
     readFile(new URL("app/patents/page.tsx", root), "utf8"),
     readFile(new URL("app/patent-data.ts", root), "utf8"),
+    readFile(new URL("app/notes/page.tsx", root), "utf8"),
+    readFile(new URL("app/notes-data.ts", root), "utf8"),
     readFile(new URL("app/SiteHeader.tsx", root), "utf8"),
   ]);
 
   assert.match(header, /href="\/publications\/">Publications</);
   assert.match(header, /href="\/patents\/">Patents</);
+  assert.match(header, /href="\/notes\/">Research Notes</);
   assert.match(header, /href="\/everything\/">Everything is Research</);
   assert.doesNotMatch(header, />Timeline</);
   assert.doesNotMatch(home, /ResearchTimeline|patent-list/);
   assert.match(publications, /ResearchTimeline/);
   assert.match(publications, /Selected publications/);
   assert.match(patentPage, /patent-list/);
+  assert.match(notesPage, /notes-timeline/);
+  assert.match(notesData, /2026-08-01T21:26:00\+08:00/);
+  assert.match(notesData, /refinement of everyday thinking/);
+  assert.match(notesData, /keep asking why/);
+  assert.match(notesData, /bloodshot this morning\. 😭/);
   assert.equal((patentData.match(/status: "(?:Filed|Granted)"/g) ?? []).length, 4);
   assert.match(patentData, /ZL202511903863\.4/);
   assert.match(patentData, /CN121357036B/);
@@ -133,6 +141,9 @@ test("design uses Arial throughout and responsive layouts", async () => {
   assert.match(css, /--pink:/);
   assert.match(css, /--lavender:/);
   assert.match(css, /@media \(max-width: 620px\)/);
+  assert.match(css, /overflow-x: auto/);
+  assert.match(css, /grid-column: 1 \/ -1/);
+  assert.doesNotMatch(css, /\.tabs \{ display: none; \}/);
   assert.match(css, /font-family: Arial, Helvetica, sans-serif/);
   assert.match(css, /\.timeline-track::before/);
   assert.doesNotMatch(css, /scroll-snap-type: x mandatory/);

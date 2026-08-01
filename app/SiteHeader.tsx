@@ -10,6 +10,7 @@ export default function SiteHeader({ innerPage = false }: { innerPage?: boolean 
         <a href="/">About</a>
         <a href="/publications/">Publications</a>
         <a href="/patents/">Patents</a>
+        <a href="/notes/">Research Notes</a>
         <a href="/everything/">Everything is Research</a>
       </nav>
       <VisitorCounter />
