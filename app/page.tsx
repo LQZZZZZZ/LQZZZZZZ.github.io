@@ -23,15 +23,13 @@ export default function Home() {
             <ul className="profile-intro">
               <li>
                 I am currently a CIE Ph.D. student at CUHK-Shenzhen, exploring
-                AI for user experience in wireless communications.
-              </li>
-              <li>
-                I enjoy exploring unfamiliar ideas and asking why things work
-                the way they do.
+                deep learning (DL), agentic networking, and AI for wireless
+                networking.
               </li>
               <li>Outside research, I enjoy playing tennis and photography.</li>
               <li>
-                I am always happy to connect, exchange ideas, and collaborate.
+                I very, very, very warmly welcome conversations and
+                collaborations—please feel free to reach out.
               </li>
             </ul>
             <div className="profile-links">
