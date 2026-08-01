@@ -57,10 +57,10 @@ export default function Home() {
           </div>
           <ol>
             <li>
-              <span className="institution-logo">
+              <span className="institution-logo institution-logo-cuhk">
                 <img
-                  src="https://www.cuhk.edu.cn/sites/webmaster.prod1.dpsite04.cuhk.edu.cn/files/zh-hans_logo.png"
-                  alt=""
+                  src="/logos/cuhk-shenzhen.png"
+                  alt="The Chinese University of Hong Kong crest"
                 />
               </span>
               <time>2024 — Present</time>
@@ -72,8 +72,8 @@ export default function Home() {
             <li>
               <span className="institution-logo institution-logo-sribd">
                 <img
-                  src="https://www.sribd.cn/sites/default/files/styles/crop_freeform/public/2020-12/%E7%BD%91%E7%AB%99logo%E7%99%BD%E5%AD%97.png?itok=arFa1TrK"
-                  alt=""
+                  src="/logos/sribd.png"
+                  alt="Shenzhen Research Institute of Big Data logo"
                 />
               </span>
               <time>Since 2024</time>

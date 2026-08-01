@@ -13,6 +13,9 @@ test("homepage is dedicated to profile and background", async () => {
   assert.match(page, /Ph\.D\. Student in Computer and Information Engineering/);
   assert.match(page, /Visiting Student/);
   assert.match(page, /Shenzhen Research Institute of Big Data/);
+  assert.match(page, /\/logos\/cuhk-shenzhen\.png/);
+  assert.match(page, /\/logos\/sribd\.png/);
+  assert.doesNotMatch(page, /cuhk\.edu\.cn\/sites\/|sribd\.cn\/sites\/default/);
   assert.match(page, /CIE Ph\.D\. student at CUHK-Shenzhen/);
   assert.match(page, /deep learning \(DL\), agentic networking, and AI for wireless\s+networking/);
   assert.match(page, /playing tennis and photography/);
