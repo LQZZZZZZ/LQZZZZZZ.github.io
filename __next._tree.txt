@@ -5,4 +5,4 @@
 :HL["https://commons.wikimedia.org/wiki/Special:Redirect/file/ICBC%20China%20logo.svg","image"]
 :HL["https://cdn.urongda.com/images/normal/medium/sun-yat-sen-university-logo-1024px.png","image"]
 :HL["https://www.ecjtu.edu.cn/images/20/06/06/1mjdfx5pym/xiaohui20210811.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"wwft11aWYXES4pCFZ8CGr"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"RinmkQBDwoPX7FaFVrpze"}
