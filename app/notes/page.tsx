@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import InterestingNav from "../InterestingNav";
 import SiteHeader from "../SiteHeader";
 import { researchNotes } from "../notes-data";
 
 export const metadata: Metadata = {
-  title: "Research Notes · Qizhe Li",
+  title: "Research Posts · Qizhe Li",
   description:
     "Dated thoughts, questions, and small reflections from Qizhe Li's research life.",
 };
@@ -12,9 +13,10 @@ export default function ResearchNotesPage() {
   return (
     <main>
       <SiteHeader innerPage />
+      <InterestingNav />
       <section className="section page-section notes-section">
         <div className="section-heading">
-          <p className="eyebrow">Research Notes</p>
+          <p className="eyebrow">Something Interesting · 02</p>
           <h1>Thoughts along the way</h1>
           <p>
             Questions, observations, and honest moments from everyday research,
@@ -40,12 +42,11 @@ export default function ResearchNotesPage() {
       <footer>
         <div>
           <p>Qizhe Li</p>
-          <span>Research Notes</span>
+          <span>Research Posts</span>
         </div>
         <div className="footer-links">
-          <a href="/">About</a>
-          <a href="/publications/">Publications</a>
-          <a href="/patents/">Patents</a>
+          <a href="/interesting/">Something Interesting</a>
+          <a href="/interesting/daily/">Daily Sharing</a>
         </div>
       </footer>
     </main>

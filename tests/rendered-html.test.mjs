@@ -41,8 +41,8 @@ test("homepage is dedicated to profile and background", async () => {
   assert.match(data, /github\.com\/LQZZZZZZ\/DK_Root/);
 });
 
-test("top-level tabs lead to separate pages", async () => {
-  const [home, publications, patentPage, patentData, notesPage, notesData, header] = await Promise.all([
+test("top-level tabs lead to separate pages and the interesting-content hub", async () => {
+  const [home, publications, patentPage, patentData, notesPage, notesData, header, interesting, interestingNav] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("app/publications/page.tsx", root), "utf8"),
     readFile(new URL("app/patents/page.tsx", root), "utf8"),
@@ -50,12 +50,19 @@ test("top-level tabs lead to separate pages", async () => {
     readFile(new URL("app/notes/page.tsx", root), "utf8"),
     readFile(new URL("app/notes-data.ts", root), "utf8"),
     readFile(new URL("app/SiteHeader.tsx", root), "utf8"),
+    readFile(new URL("app/interesting/page.tsx", root), "utf8"),
+    readFile(new URL("app/InterestingNav.tsx", root), "utf8"),
   ]);
 
-  assert.match(header, /href="\/publications\/">Publications</);
+  assert.match(header, /href="\/publications\/">Publication</);
   assert.match(header, /href="\/patents\/">Patents</);
-  assert.match(header, /href="\/notes\/">Research Notes</);
-  assert.match(header, /href="\/everything\/">Everything is Research</);
+  assert.match(header, /href="\/interesting\/">Something Interesting</);
+  assert.doesNotMatch(header, /href="\/notes\/">Research Notes</);
+  assert.doesNotMatch(header, /href="\/everything\/">Everything is Research</);
+  assert.match(interestingNav, /Not-Quite Research/);
+  assert.match(interestingNav, /Research Posts/);
+  assert.match(interestingNav, /Daily Sharing/);
+  assert.match(interesting, /A place for ideas in motion/);
   assert.doesNotMatch(header, />Timeline</);
   assert.doesNotMatch(home, /ResearchTimeline|patent-list/);
   assert.match(publications, /ResearchTimeline/);
@@ -72,6 +79,33 @@ test("top-level tabs lead to separate pages", async () => {
   assert.match(patentData, /CN116451570B/);
   assert.match(patentData, /CN116562124B/);
   assert.doesNotMatch(patentData, /CN111046606A|CN106372278A/);
+});
+
+test("daily sharing provides an interactive calendar and a bilingual first post", async () => {
+  const [calendar, data, post, css, home] = await Promise.all([
+    readFile(new URL("app/interesting/daily/DailyCalendar.tsx", root), "utf8"),
+    readFile(new URL("app/daily-data.ts", root), "utf8"),
+    readFile(new URL("app/interesting/daily/learning-to-ask-why/page.tsx", root), "utf8"),
+    readFile(new URL("app/globals.css", root), "utf8"),
+    readFile(new URL("app/page.tsx", root), "utf8"),
+  ]);
+
+  assert.match(calendar, /useState/);
+  assert.match(calendar, /Previous month/);
+  assert.match(calendar, /Next month/);
+  assert.match(calendar, /role="grid"/);
+  assert.match(data, /2026-08-02/);
+  assert.match(data, /learning-to-ask-why/);
+  assert.match(post, /lang="en"/);
+  assert.match(post, /lang="zh-CN"/);
+  assert.match(post, /why is it worth doing/);
+  assert.match(post, /提出问题/);
+  assert.match(css, /\.calendar-grid/);
+  assert.match(css, /\.language-columns/);
+  assert.match(home, /Research taste/);
+  assert.match(home, /So what\?/);
+  assert.match(home, /Why now\?/);
+  assert.match(home, /What changes after your method succeeds\?/);
 });
 
 test("research timeline is vertical, filterable, illustrated, and reverse chronological", async () => {

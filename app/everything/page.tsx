@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import InterestingNav from "../InterestingNav";
 import SiteHeader from "../SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Everything is Research · Qizhe Li",
+  title: "Not-Quite Research · Qizhe Li",
   description:
     "Tools, prototypes, and side investigations by Qizhe Li beyond the formal publication record.",
 };
@@ -78,10 +79,11 @@ export default function EverythingPage() {
   return (
     <main>
       <SiteHeader innerPage />
+      <InterestingNav />
 
       <header className="notebook-hero">
-        <p className="eyebrow">Project notebook</p>
-        <h1>Everything is Research</h1>
+        <p className="eyebrow">Something Interesting · 01</p>
+        <h1>Not-Quite Research</h1>
         <p>
           Not every useful question begins as a paper. This page keeps the
           tools, prototypes, and everyday investigations that sit outside my
@@ -174,10 +176,10 @@ export default function EverythingPage() {
       <footer>
         <div>
           <p>Qizhe Li</p>
-          <span>Everything is Research</span>
+          <span>Not-Quite Research</span>
         </div>
         <div className="footer-links">
-          <a href="/">Academic profile</a>
+          <a href="/interesting/">Something Interesting</a>
           <a href="https://github.com/LQZZZZZZ" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </footer>

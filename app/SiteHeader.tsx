@@ -8,10 +8,9 @@ export default function SiteHeader({ innerPage = false }: { innerPage?: boolean 
       </a>
       <nav className="tabs" aria-label="Page navigation">
         <a href="/">About</a>
-        <a href="/publications/">Publications</a>
+        <a href="/publications/">Publication</a>
         <a href="/patents/">Patents</a>
-        <a href="/notes/">Research Notes</a>
-        <a href="/everything/">Everything is Research</a>
+        <a href="/interesting/">Something Interesting</a>
       </nav>
       <VisitorCounter />
     </header>

@@ -125,6 +125,33 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="research-taste" aria-labelledby="research-taste-title">
+        <div className="taste-heading">
+          <p className="eyebrow">Research taste</p>
+          <h2 id="research-taste-title">Returning a paper to its original reason for existing.</h2>
+        </div>
+        <div className="taste-judgements">
+          <article>
+            <span>01</span>
+            <p>Which problems are merely technically feasible—and which ones truly matter?</p>
+          </article>
+          <article>
+            <span>02</span>
+            <p>Which incremental change actually alters the nature of the problem?</p>
+          </article>
+          <article>
+            <span>03</span>
+            <p>Which question could allow a reviewer to puncture the whole argument?</p>
+          </article>
+        </div>
+        <div className="taste-questions" aria-label="Four questions for research taste">
+          <p>So what?</p>
+          <p>Why now?</p>
+          <p>Why is the existing solution insufficient?</p>
+          <p>What changes after your method succeeds?</p>
+        </div>
+      </section>
+
       <footer>
         <div>
           <p>Qizhe Li</p>
