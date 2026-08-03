@@ -1,8 +1,8 @@
-:HL["/_next/static/css/635762982481f36a.css","style"]
+:HL["/_next/static/chunks/15-~3s0hdsug..css","style"]
 :HL["/profile.jpg","image"]
-:HL["/logos/cuhk-shenzhen.png","image"]
-:HL["/logos/sribd.png","image"]
-:HL["https://commons.wikimedia.org/wiki/Special:Redirect/file/ICBC%20China%20logo.svg","image"]
-:HL["https://cdn.urongda.com/images/normal/medium/sun-yat-sen-university-logo-1024px.png","image"]
-:HL["https://www.ecjtu.edu.cn/images/20/06/06/1mjdfx5pym/xiaohui20210811.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"6zAVXEGNE6_yaLqAkl-lz"}
+:HL["/institutions/cuhk-shenzhen.png","image"]
+:HL["/institutions/sribd.png","image"]
+:HL["https://upload.wikimedia.org/wikipedia/commons/3/3f/ICBC_China_logo.svg","image"]
+:HL["/institutions/sun-yat-sen-university.png","image"]
+:HL["/institutions/east-china-jiaotong-university.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"25mSAjgKGBXD2P6sGpO94"}
