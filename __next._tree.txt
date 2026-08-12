@@ -5,4 +5,4 @@
 :HL["https://upload.wikimedia.org/wikipedia/commons/3/3f/ICBC_China_logo.svg","image"]
 :HL["/institutions/sun-yat-sen-university.png","image"]
 :HL["/institutions/east-china-jiaotong-university.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"hP0tZ3noGnl27VE9Dkm-n"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"jSIyQqhIooD4IPofFEDbX"}
