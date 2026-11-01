@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">NODA: agentic RAN diagnosis</title>
+<desc id="desc">English adaptation of Figure 1: an LLM agent plans diagnostic tasks, coordinates execution, and uses tools, domain knowledge, and historical cases to generate evidence-grounded diagnosis reports.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10" fill="#527b9b"/></marker></defs>
+<rect width="1200" height="720" fill="#fff"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#294459" text-anchor="middle">
+<text x="600" y="57" font-size="32" font-weight="700">NODA: agentic RAN diagnosis</text>
+<text x="600" y="94" font-size="19" fill="#647886">Large models + domain knowledge + specialized tools</text>
+<rect x="24" y="260" width="176" height="190" rx="10" fill="#eef5fc" stroke="#a8bfd2" stroke-width="2"/>
+<text x="112" y="307" font-size="23" font-weight="700">Inputs</text>
+<text x="112" y="351" font-size="19">Diagnostic request</text>
+<text x="112" y="384" font-size="19">RAN session KPIs</text>
+<rect x="252" y="146" width="696" height="140" rx="10" fill="#eef5fc" stroke="#a8bfd2" stroke-width="2"/>
+<text x="600" y="185" font-size="25" font-weight="700">LLM agent planning</text>
+<text x="600" y="228" font-size="20">Task understanding · Task decomposition</text>
+<text x="600" y="260" font-size="20">Strategy planning · State tracking</text>
+<rect x="252" y="326" width="696" height="140" rx="10" fill="#f0f7f3" stroke="#a8c6b5" stroke-width="2"/>
+<text x="600" y="368" font-size="25" font-weight="700">Diagnostic execution</text>
+<text x="600" y="412" font-size="20">KPI analysis · Fault tracing · Report generation</text>
+<text x="600" y="443" font-size="18" fill="#647886">Evidence collection and verification</text>
+<rect x="252" y="507" width="696" height="140" rx="10" fill="#fff6ec" stroke="#d7bea4" stroke-width="2"/>
+<text x="600" y="549" font-size="25" font-weight="700">Harness support</text>
+<text x="600" y="595" font-size="20">Tool pool · Domain knowledge · Historical cases</text>
+<rect x="1000" y="260" width="176" height="190" rx="10" fill="#eef5fc" stroke="#a8bfd2" stroke-width="2"/>
+<text x="1088" y="307" font-size="23" font-weight="700">Outputs</text>
+<text x="1088" y="351" font-size="19">Root causes</text>
+<text x="1088" y="384" font-size="19">Fault chains</text>
+<text x="1088" y="417" font-size="19">Evidence report</text>
+<text x="600" y="693" font-size="18" fill="#647886">English adaptation of the published framework (Figure 1)</text>
+</g>
+<g stroke="#527b9b" stroke-width="3" fill="none" marker-end="url(#arrow)">
+<path d="M200 355H250"/><path d="M600 286V324"/><path d="M600 507V468"/><path d="M948 355H998"/>
+</g></svg>
