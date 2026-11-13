@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NotFound() {
   return (
     <main className="not-found-page">
@@ -7,7 +9,7 @@ export default function NotFound() {
         The address may have changed, or the page may no longer be part of this
         research notebook.
       </p>
-      <a href="/">Return to the academic profile →</a>
+      <Link href="/">Return to the academic profile →</Link>
     </main>
   );
 }

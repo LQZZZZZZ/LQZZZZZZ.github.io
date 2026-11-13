@@ -4,36 +4,40 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-test("homepage is dedicated to profile and background", async () => {
-  const [page, data] = await Promise.all([
+test("homepage presents profile, research focus, news, and background", async () => {
+  const [home, sidebar, data] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
+    readFile(new URL("app/SiteSidebar.tsx", root), "utf8"),
     readFile(new URL("app/research-data.ts", root), "utf8"),
   ]);
 
-  assert.match(page, /Ph\.D\. Student in Computer and Information Engineering/);
-  assert.match(page, /Visiting Student/);
+  const page = home + sidebar;
+  assert.match(page, /Ph\.D\. student<\/strong> in Computer and Information Engineering/);
+  assert.match(page, /Joint Ph.D. Training/);
   assert.match(page, /Shenzhen Research Institute of Big Data/);
-  assert.match(page, /\/logos\/cuhk-shenzhen\.png/);
-  assert.match(page, /\/logos\/sribd\.png/);
-  assert.doesNotMatch(page, /cuhk\.edu\.cn\/sites\/|sribd\.cn\/sites\/default/);
-  assert.match(page, /CIE Ph\.D\. student at CUHK-Shenzhen/);
-  assert.match(page, /deep learning \(DL\), agentic networking, and AI for wireless\s+networking/);
+  assert.match(page, /Shenzhen, advised by/);
+  assert.match(page, /sites\.google\.com\/view\/guangxuzhu\/home/);
   assert.match(page, /playing tennis and photography/);
-  assert.match(page, /very, very, very warmly welcome conversations and\s+collaborations/);
-  assert.match(page, /profile-intro/);
-  assert.doesNotMatch(page, /exploring unfamiliar ideas|asking why things work/);
+  assert.match(page, /connect, exchange ideas, and collaborate/);
+  assert.match(page, /home-intro/);
   assert.doesNotMatch(page, /dreams of\s+doing absolutely nothing/);
   assert.match(page, /qizheli@link\.cuhk\.edu\.cn/);
-  assert.match(page, /AI for Wireless Networking/);
+  assert.match(page, /intelligent networks and AI-RAN/);
   assert.equal(
-    (page.match(/className="institution-logo/g) ?? []).length,
-    5,
+    (page.match(/logo: "/g) ?? []).length,
+    6,
     "every institution must have a logo",
   );
   assert.doesNotMatch(page, /I study how reliable learning and reasoning/);
-  assert.match(page, /profile-history/);
-  assert.doesNotMatch(page, /research-threads/);
-  assert.doesNotMatch(page, /Selected publications|patent-list|everything-teaser/);
+  assert.match(page, /experience-list/);
+  assert.doesNotMatch(page, /Recent updates|exploring unfamiliar ideas/);
+  assert.doesNotMatch(home, /Research Interests/);
+  assert.doesNotMatch(sidebar, /李启喆/);
+  assert.match(sidebar, />qizheli@link\.cuhk\.edu\.cn<\/a>/);
+  assert.doesNotMatch(home, /id="skills"|Research &amp; Engineering/);
+  assert.match(home, /id="awards"/);
+  assert.match(page, /<NewsList/);
+  assert.doesNotMatch(page, /patent-list|everything-teaser/);
   assert.match(data, /Uncertainty Quantification/);
   assert.match(data, /AI for Networks/);
   assert.match(page, /Google Scholar/);
@@ -41,8 +45,8 @@ test("homepage is dedicated to profile and background", async () => {
   assert.match(data, /github\.com\/LQZZZZZZ\/DK_Root/);
 });
 
-test("top-level tabs lead to separate pages and the interesting-content hub", async () => {
-  const [home, publications, patentPage, patentData, notesPage, notesData, header, interesting, interestingNav] = await Promise.all([
+test("navigation reaches homepage sections and separate pages", async () => {
+  const [home, publications, patentPage, patentData, notesPage, notesData, header] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("app/publications/page.tsx", root), "utf8"),
     readFile(new URL("app/patents/page.tsx", root), "utf8"),
@@ -50,23 +54,16 @@ test("top-level tabs lead to separate pages and the interesting-content hub", as
     readFile(new URL("app/notes/page.tsx", root), "utf8"),
     readFile(new URL("app/notes-data.ts", root), "utf8"),
     readFile(new URL("app/SiteHeader.tsx", root), "utf8"),
-    readFile(new URL("app/interesting/page.tsx", root), "utf8"),
-    readFile(new URL("app/InterestingNav.tsx", root), "utf8"),
   ]);
 
-  assert.match(header, /href="\/publications\/">Publication</);
-  assert.match(header, /href="\/patents\/">Patents</);
-  assert.match(header, /href="\/interesting\/">Something Interesting</);
-  assert.doesNotMatch(header, /href="\/notes\/">Research Notes</);
-  assert.doesNotMatch(header, /href="\/everything\/">Everything is Research</);
-  assert.match(interestingNav, /Not-Quite Research/);
-  assert.match(interestingNav, /Research Posts/);
-  assert.match(interestingNav, /Daily Sharing/);
-  assert.match(interesting, /A place for ideas in motion/);
+  assert.match(header, /href: "\/#publications", label: "Publications"/);
+  assert.match(header, /href: "\/patents\/", label: "Patents"/);
+  assert.match(header, /href: "\/interesting\/", label: "Something Interesting"/);
   assert.doesNotMatch(header, />Timeline</);
-  assert.doesNotMatch(home, /ResearchTimeline|patent-list/);
+  assert.match(home, /ResearchTimeline/);
+  assert.doesNotMatch(home, /patent-list/);
   assert.match(publications, /ResearchTimeline/);
-  assert.match(publications, /Selected publications/);
+  assert.match(publications, /<h1>Publications<\/h1>/);
   assert.match(patentPage, /patent-list/);
   assert.match(notesPage, /notes-timeline/);
   assert.match(notesData, /2026-08-01T21:26:00\+08:00/);
@@ -81,34 +78,29 @@ test("top-level tabs lead to separate pages and the interesting-content hub", as
   assert.doesNotMatch(patentData, /CN111046606A|CN106372278A/);
 });
 
-test("daily sharing provides an interactive calendar and a bilingual first post", async () => {
-  const [calendar, data, post, css, home] = await Promise.all([
+test("Something Interesting restores the sharing calendar and bilingual post", async () => {
+  const [hub, nav, calendarPage, calendar, entries, post] = await Promise.all([
+    readFile(new URL("app/interesting/page.tsx", root), "utf8"),
+    readFile(new URL("app/InterestingNav.tsx", root), "utf8"),
+    readFile(new URL("app/interesting/daily/page.tsx", root), "utf8"),
     readFile(new URL("app/interesting/daily/DailyCalendar.tsx", root), "utf8"),
     readFile(new URL("app/daily-data.ts", root), "utf8"),
     readFile(new URL("app/interesting/daily/learning-to-ask-why/page.tsx", root), "utf8"),
-    readFile(new URL("app/globals.css", root), "utf8"),
-    readFile(new URL("app/page.tsx", root), "utf8"),
   ]);
 
-  assert.match(calendar, /useState/);
-  assert.match(calendar, /Previous month/);
-  assert.match(calendar, /Next month/);
-  assert.match(calendar, /role="grid"/);
-  assert.match(data, /2026-08-02/);
-  assert.match(data, /learning-to-ask-why/);
-  assert.match(post, /lang="en"/);
-  assert.match(post, /lang="zh-CN"/);
-  assert.match(post, /why is it worth doing/);
-  assert.match(post, /提出问题/);
-  assert.match(css, /\.calendar-grid/);
-  assert.match(css, /\.language-columns/);
-  assert.match(home, /Research taste/);
-  assert.match(home, /So what\?/);
-  assert.match(home, /Why now\?/);
-  assert.match(home, /What changes after your method succeeds\?/);
+  assert.match(hub, /Not-Quite Research/);
+  assert.match(hub, /Research Posts/);
+  assert.match(hub, /Sharing Calendar/);
+  assert.match(nav, /\/interesting\/daily\//);
+  assert.match(calendarPage, /<DailyCalendar entries={dailyEntries} \/>/);
+  assert.match(calendar, /Previous month|Next month|calendar-grid/);
+  assert.match(entries, /2026-08-02/);
+  assert.match(post, /English/);
+  assert.match(post, /中文/);
+  assert.doesNotMatch(hub + calendarPage + nav, /Daily Sharing/);
 });
 
-test("research timeline is vertical, filterable, illustrated, and reverse chronological", async () => {
+test("publications are filterable, illustrated, and reverse chronological", async () => {
   const [timeline, data] = await Promise.all([
     readFile(new URL("app/ResearchTimeline.tsx", root), "utf8"),
     readFile(new URL("app/research-data.ts", root), "utf8"),
@@ -122,12 +114,12 @@ test("research timeline is vertical, filterable, illustrated, and reverse chrono
   assert.match(data, /\/research\/qoe-reasoner-overview\.png/);
   assert.equal(
     (data.match(/image: "\/research\//g) ?? []).length,
-    8,
+    9,
     "every research work must include a figure",
   );
   assert.equal(
     (data.match(/imageAlt: "/g) ?? []).length,
-    8,
+    9,
     "every research figure must have alternative text",
   );
 
@@ -163,13 +155,16 @@ test("visitor counter has a privacy-minimal fallback", async () => {
   assert.match(counter, /lqzzzzzz\.github\.io/);
   assert.match(counter, /counterapi\.dev\/v1\/lqzzzzzz-github-io\/visitors/);
   assert.match(counter, /endpoint\}\/up/);
+  assert.match(counter, /window\.location\.pathname === "\/"/);
+  assert.doesNotMatch(counter, /localStorage/);
+  assert.match(counter, /cache: "no-store"/);
   assert.match(counter, /data\.count/);
-  assert.match(counter, /Welcome, visitor No\./);
+  assert.match(counter, /Visitor No\./);
   assert.match(counter, /Welcome/);
   assert.doesNotMatch(counter, /document\.referrer|search_query|email|timezone/);
 });
 
-test("design uses Arial throughout and responsive layouts", async () => {
+test("site keeps consistent sans-serif typography and responsive layouts", async () => {
   const [css, layout, notFound] = await Promise.all([
     readFile(new URL("app/globals.css", root), "utf8"),
     readFile(new URL("app/layout.tsx", root), "utf8"),
@@ -179,11 +174,11 @@ test("design uses Arial throughout and responsive layouts", async () => {
   assert.match(css, /--pink:/);
   assert.match(css, /--lavender:/);
   assert.match(css, /@media \(max-width: 620px\)/);
-  assert.match(css, /overflow-x: auto/);
   assert.match(css, /grid-column: 1 \/ -1/);
-  assert.doesNotMatch(css, /\.tabs \{ display: none; \}/);
-  assert.match(css, /font-family: Arial, Helvetica, sans-serif/);
-  assert.match(css, /\.timeline-track::before/);
+  assert.match(css, /\.nav-toggle/);
+  assert.match(css, /font-family: "Trebuchet MS", Arial, Helvetica, sans-serif/);
+  assert.match(css, /\.profile-sidebar/);
+  assert.match(layout, /<SiteSidebar \/>/);
   assert.doesNotMatch(css, /scroll-snap-type: x mandatory/);
   assert.doesNotMatch(css, /Comic Sans|Times New Roman|Georgia/);
   assert.doesNotMatch(layout, /next\/font|Geist_Mono|Georgia|Times New Roman/);

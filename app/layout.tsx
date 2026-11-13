@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import SiteHeader from "./SiteHeader";
+import SiteSidebar from "./SiteSidebar";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lqzzzzzz.github.io"),
-  title: "Qizhe Li · Trustworthy AI & Intelligent Networks",
+  title: "Qizhe Li · Intelligent Networks & AI-RAN",
   description:
-    "Qizhe Li's academic profile: uncertainty quantification, AI for networks, an interactive publication timeline, and research projects.",
+    "Qizhe Li's academic profile, news, publications, and patents in intelligent networks, AI-RAN, large language models and agents for networks, and uncertainty quantification.",
   openGraph: {
-    title: "Qizhe Li · Trustworthy AI & Intelligent Networks",
-    description: "Uncertainty quantification · AI for networks · Open research",
+    title: "Qizhe Li · Intelligent Networks & AI-RAN",
+    description: "Intelligent networks · AI-RAN · Large language models and agents · Uncertainty quantification",
     type: "website",
     images: [
       {
@@ -21,8 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Qizhe Li · Trustworthy AI & Intelligent Networks",
-    description: "Uncertainty quantification · AI for networks · Open research",
+    title: "Qizhe Li · Intelligent Networks & AI-RAN",
+    description: "Intelligent networks · AI-RAN · Large language models and agents · Uncertainty quantification",
     images: ["https://lqzzzzzz.github.io/og.png"],
   },
 };
@@ -34,7 +36,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <SiteHeader />
+        <div className="site-layout">
+          <SiteSidebar />
+          <div className="site-content" id="main-content">{children}</div>
+        </div>
+      </body>
     </html>
   );
 }

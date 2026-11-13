@@ -8,6 +8,13 @@ export type DailyEntry = {
 
 export const dailyEntries: DailyEntry[] = [
   {
+    date: "2026-08-12",
+    title: "What Makes a Good Presentation?",
+    titleZh: "什么是好的 presentation？",
+    href: "/interesting/daily/what-makes-a-good-presentation/",
+    type: "Blog",
+  },
+  {
     date: "2026-08-02",
     title: "Learning to Ask Why a Paper Should Exist",
     titleZh: "学着追问：一篇论文为什么应该存在",

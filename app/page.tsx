@@ -1,169 +1,157 @@
-import SiteHeader from "./SiteHeader";
-import { scholarUrl } from "./research-data";
+import { newsItems, type NewsItem } from "./news-data";
+import ResearchTimeline from "./ResearchTimeline";
+import ContactCard from "./ContactCard";
+import "./home.css";
 
-const githubUrl = "https://github.com/LQZZZZZZ";
+const experience = [
+  {
+    period: "2015–2019",
+    institution: "East China Jiaotong University",
+    label: "ECJTU",
+    role: "B.Sc. · Information & Computing Science",
+    logo: "/institutions/east-china-jiaotong-university.png",
+    logoClass: "",
+  },
+  {
+    period: "2020–2023",
+    institution: "Sun Yat-sen University",
+    label: "Sun Yat-sen University",
+    role: "M.Sc. · Mathematics",
+    logo: "/institutions/sun-yat-sen-university.png",
+    logoClass: "",
+  },
+  {
+    period: "2023–2024",
+    institution: "ICBC Software Development Center, Guangzhou",
+    label: "ICBC · Guangzhou",
+    role: "Financial Technology Manager",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/3/3f/ICBC_China_logo.svg",
+    logoClass: "experience-logo-icbc",
+  },
+  {
+    period: "2024–Present",
+    institution: "The Chinese University of Hong Kong, Shenzhen",
+    label: "CUHK-Shenzhen",
+    role: "Ph.D. · Computer & Information Engineering",
+    logo: "/institutions/cuhk-shenzhen.png",
+    logoClass: "experience-logo-cuhk",
+  },
+  {
+    period: "Since 2024",
+    institution: "Shenzhen Research Institute of Big Data",
+    label: "SRIBD",
+    role: "Joint Ph.D. Training · SRIBD & SICIAM",
+    logo: "/institutions/sribd.png",
+    logoClass: "experience-logo-sribd",
+  },
+  {
+    period: "Nov. 2026–Present",
+    institution: "Huawei",
+    label: "Huawei",
+    role: "Intern",
+    logo: "/institutions/huawei.svg",
+    logoClass: "",
+  },
+];
 
-function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+function NewsEmphasis({ text }: { text: string }) {
+  return text.split(/(QoEReasoner|DK-Root|SemiRoot|First Prize|passed Phase 1|IEEE INFOCOM|AAAI|accepted(?: for publication)?|granted)/g)
+    .map((part, index) => index % 2 ? <strong key={index}>{part}</strong> : part);
+}
+
+function NewsList({ items }: { items: NewsItem[] }) {
+  return (
+    <ul className="home-news-list">
+      {items.map((item) => (
+        <li key={item.id}>
+          <time dateTime={item.month}>{item.month.replace("-", ".")}</time>
+          <span>{" "}{item.id.endsWith("accepted") ? "🎉 " : ""}<NewsEmphasis text={item.summary} />
+            {item.title && <> <span className="news-paper-title">“<NewsEmphasis text={item.title} />”</span></>}
+            {item.detail && <>{item.detail === "." ? "" : " "}<NewsEmphasis text={item.detail} /></>}
+            {item.link && <> <a href={item.link.href} target="_blank" rel="noreferrer">[{item.link.label}]</a></>}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default function Home() {
   return (
-    <main>
-      <SiteHeader />
-
-      <section className="profile-section" id="about">
-        <div className="profile-primary">
-          <div className="profile-copy">
-            <p className="eyebrow">Academic profile</p>
-            <h1>Qizhe Li</h1>
-            <p className="role-line">
-              Ph.D. Student in Computer and Information Engineering
-            </p>
-            <ul className="profile-intro">
-              <li>
-                I am currently a CIE Ph.D. student at CUHK-Shenzhen, exploring
-                deep learning (DL), agentic networking, and AI for wireless
-                networking.
-              </li>
-              <li>Outside research, I enjoy playing tennis and photography.</li>
-              <li>
-                I very, very, very warmly welcome conversations and
-                collaborations—please feel free to reach out.
-              </li>
+    <main className="home-page">
+      <h1 className="visually-hidden">Qizhe Li — Academic Homepage</h1>
+      <section className="home-about" id="about" aria-label="About me">
+        <div className="home-intro">
+          <p><strong>🎓 Education:</strong> I am a <strong>Ph.D. student</strong> in Computer and Information Engineering at The Chinese University of Hong Kong,
+            Shenzhen, advised by <a href="https://sites.google.com/view/guangxuzhu/home" target="_blank" rel="noreferrer">Prof. Guangxu Zhu</a>.
+            I am jointly trained by <strong>CUHK-Shenzhen</strong>, the <strong>Shenzhen Research Institute of Big Data (SRIBD)</strong>,
+            and the <strong>Shenzhen International Center for Industrial and Applied Mathematics (SICIAM)</strong>,
+            and receive the <strong>SRIBD Ph.D. Scholarship (Gold Award)</strong>.</p>
+          <p><strong>🔬 Research:</strong> My research focuses on <strong>intelligent networks and AI-RAN</strong>, exploring how machine learning,{' '}
+            <strong>large language models and agents</strong> can advance wireless network intelligence.
+            My earlier work studied uncertainty quantification, sensitivity analysis, and surrogate-based optimization.</p>
+          <div className="intro-reviewing"><p><strong>📝 Reviewing:</strong> I serve as a reviewer for:</p>
+            <ul>
+              <li><strong>Conferences:</strong> IEEE WCNC 2024, IEEE PIMRC 2025, and IEEE ICC 2026.</li>
+              <li><strong>Journals:</strong> Journal of Nanjing University of Posts and Telecommunications (《南京邮电大学学报》),
+                Journal of Electronics &amp; Information Technology (《电子与信息学报》),
+                and IEEE Journal on Selected Areas in Communications (JSAC), 2026 special issue on agentic AI.</li>
             </ul>
-            <div className="profile-links">
-              <a href={scholarUrl} target="_blank" rel="noreferrer">
-                Google Scholar <Arrow />
-              </a>
-              <a href={githubUrl} target="_blank" rel="noreferrer">
-                GitHub <Arrow />
-              </a>
-              <a href="mailto:qizheli@link.cuhk.edu.cn">
-                qizheli@link.cuhk.edu.cn <Arrow />
-              </a>
-            </div>
           </div>
-          <figure className="profile-photo">
-            <img src="/profile.jpg" alt="Qizhe Li" width="1296" height="1345" />
-            <figcaption>CUHK-Shenzhen · since 2024</figcaption>
-          </figure>
-        </div>
-
-        <div className="profile-history" aria-label="Education and experience">
-          <div className="history-label">
-            <p className="eyebrow">Background</p>
-            <p>A path from mathematics and uncertainty to intelligent network systems.</p>
-          </div>
-          <ol>
-            <li>
-              <span className="institution-logo institution-logo-cuhk">
-                <img
-                  src="/logos/cuhk-shenzhen.png"
-                  alt="The Chinese University of Hong Kong crest"
-                />
-              </span>
-              <time>2024 — Present</time>
-              <div>
-                <strong>Ph.D., Computer and Information Engineering</strong>
-                <span>The Chinese University of Hong Kong, Shenzhen</span>
-              </div>
-            </li>
-            <li>
-              <span className="institution-logo institution-logo-sribd">
-                <img
-                  src="/logos/sribd.png"
-                  alt="Shenzhen Research Institute of Big Data logo"
-                />
-              </span>
-              <time>Since 2024</time>
-              <div>
-                <strong>Visiting Student</strong>
-                <span>Shenzhen Research Institute of Big Data</span>
-              </div>
-            </li>
-            <li>
-              <span className="institution-logo">
-                <img
-                  src="https://commons.wikimedia.org/wiki/Special:Redirect/file/ICBC%20China%20logo.svg"
-                  alt=""
-                />
-              </span>
-              <time>2023 — 2024</time>
-              <div>
-                <strong>Financial Technology Manager</strong>
-                <span>ICBC Software Development Center, Guangzhou</span>
-              </div>
-            </li>
-            <li>
-              <span className="institution-logo">
-                <img
-                  src="https://cdn.urongda.com/images/normal/medium/sun-yat-sen-university-logo-1024px.png"
-                  alt=""
-                />
-              </span>
-              <time>2020 — 2023</time>
-              <div>
-                <strong>M.Sc., Mathematics</strong>
-                <span>Sun Yat-sen University</span>
-              </div>
-            </li>
-            <li>
-              <span className="institution-logo">
-                <img
-                  src="https://www.ecjtu.edu.cn/images/20/06/06/1mjdfx5pym/xiaohui20210811.png"
-                  alt=""
-                />
-              </span>
-              <time>2015 — 2019</time>
-              <div>
-                <strong>B.Sc., Information and Computing Science</strong>
-                <span>East China Jiaotong University</span>
-              </div>
-            </li>
-          </ol>
+          <p><strong>🎾 Beyond Research:</strong> Outside research, I enjoy playing tennis and photography.</p>
+          <p><strong>🤝 Contact:</strong> I am happy to connect, exchange ideas, and collaborate
+            on intelligent networks and AI-driven systems. <a href="#contact">Get in touch!</a></p>
         </div>
       </section>
 
-      <section className="research-taste" aria-labelledby="research-taste-title">
-        <div className="taste-heading">
-          <p className="eyebrow">Research taste</p>
-          <h2 id="research-taste-title">Returning a paper to its original reason for existing.</h2>
-        </div>
-        <div className="taste-judgements">
-          <article>
-            <span>01</span>
-            <p>Which problems are merely technically feasible—and which ones truly matter?</p>
-          </article>
-          <article>
-            <span>02</span>
-            <p>Which incremental change actually alters the nature of the problem?</p>
-          </article>
-          <article>
-            <span>03</span>
-            <p>Which question could allow a reviewer to puncture the whole argument?</p>
-          </article>
-        </div>
-        <div className="taste-questions" aria-label="Four questions for research taste">
-          <p>So what?</p>
-          <p>Why now?</p>
-          <p>Why is the existing solution insufficient?</p>
-          <p>What changes after your method succeeds?</p>
-        </div>
+      <section className="home-section" id="news" aria-labelledby="news-title">
+        <h2 id="news-title">🔥 News</h2>
+        <NewsList items={newsItems} />
       </section>
 
-      <footer>
-        <div>
-          <p>Qizhe Li</p>
-          <span>AI for Wireless Networking</span>
+      <section className="home-section home-publications" id="publications" aria-labelledby="publications-title">
+        <div className="section-title-row">
+          <h2 id="publications-title">📝 Publications</h2>
+          <a href="/publications/">All publications →</a>
         </div>
-        <div className="footer-links">
-          <a href={scholarUrl} target="_blank" rel="noreferrer">Scholar</a>
-          <a href={githubUrl} target="_blank" rel="noreferrer">GitHub</a>
-          <a href="/publications/">Publications</a>
-          <a href="/patents/">Patents</a>
-        </div>
-      </footer>
+        <ResearchTimeline />
+      </section>
+
+      <section className="home-section" id="education" aria-labelledby="education-title">
+        <h2 id="education-title">🎓 Education &amp; Experience</h2>
+        <ol className="experience-list">
+          {[...experience].reverse().map((item) => (
+            <li key={item.institution}>
+              <div className={`experience-logo ${item.logoClass}`}><img src={item.logo} alt="" loading="lazy" /></div>
+              <div><h3>{item.institution}</h3><p>{item.role}</p></div>
+              <time>{item.period}</time>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="home-section" id="awards" aria-labelledby="awards-title">
+        <h2 id="awards-title">🏆 Honors &amp; Awards</h2>
+        <ul className="awards-list">
+          <li><strong>Ph.D. Scholarship (Gold Award)</strong>, Shenzhen Research Institute of Big Data</li>
+          <li><strong>First Prize</strong>, 2026 Greater Bay Area Graduate Research Forum <span className="award-year">(Oct. 2026)</span></li>
+          <li><strong>First-Class Graduate Scholarship</strong>, Sun Yat-sen University <span className="award-year">(2021–2023, consecutive academic years)</span></li>
+          <li><strong>Xu Zhongwei Scholarship</strong>, Sun Yat-sen University</li>
+          <li><strong>Third Prize, Graduate Division</strong>, 12th MathorCup University Mathematical Modeling Challenge</li>
+          <li><strong>Second Prize</strong>, 2nd National College Mathematics Ability Challenge</li>
+        </ul>
+      </section>
+
+      <ContactCard />
+
+      <details className="research-taste">
+        <summary>Research Taste</summary>
+        <p>Which problems are merely technically feasible—and which ones truly matter?</p>
+        <p>Which incremental change actually alters the nature of the problem?</p>
+        <p>Which question could allow a reviewer to puncture the whole argument?</p>
+        <p>So what? · Why now? · Why is the existing solution insufficient? · What changes after your method succeeds?</p>
+      </details>
+      <footer><span>© 2026 Qizhe Li</span><a href="/interesting/">Something Interesting →</a></footer>
     </main>
   );
 }

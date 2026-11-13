@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import InterestingNav from "../../../InterestingNav";
-import SiteHeader from "../../../SiteHeader";
 
 export const metadata: Metadata = {
   title: "Learning to Ask Why a Paper Should Exist · Qizhe Li",
@@ -10,11 +9,10 @@ export const metadata: Metadata = {
 export default function BlogPost() {
   return (
     <main>
-      <SiteHeader innerPage />
       <InterestingNav />
       <article className="bilingual-post">
         <header className="post-header">
-          <p className="eyebrow">Daily Sharing · Blog</p>
+          <p className="eyebrow">Sharing Calendar · Blog</p>
           <h1>Learning to Ask Why a Paper Should Exist</h1>
           <p className="post-title-zh" lang="zh-CN">学着追问：一篇论文为什么应该存在</p>
           <time dateTime="2026-08-02">August 2, 2026</time>
@@ -45,7 +43,7 @@ export default function BlogPost() {
             <p>还需要修炼呀～多读，多思考～</p>
           </section>
         </div>
-        <a className="post-back" href="/interesting/daily/">← Back to Daily Sharing</a>
+        <a className="post-back" href="/interesting/daily/">← Back to Sharing Calendar</a>
       </article>
     </main>
   );

@@ -1,7 +1,7 @@
 const sections = [
   { href: "/interesting/not-quite-research/", label: "Not-Quite Research" },
   { href: "/interesting/research-posts/", label: "Research Posts" },
-  { href: "/interesting/daily/", label: "Daily Sharing" },
+  { href: "/interesting/daily/", label: "Sharing Calendar" },
 ];
 
 export default function InterestingNav() {

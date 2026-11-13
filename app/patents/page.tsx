@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SiteHeader from "../SiteHeader";
+import Link from "next/link";
 import { patents } from "../patent-data";
 
 export const metadata: Metadata = {
@@ -11,15 +11,9 @@ export const metadata: Metadata = {
 export default function PatentsPage() {
   return (
     <main>
-      <SiteHeader innerPage />
       <section className="section patent-section page-section">
         <div className="section-heading">
-          <p className="eyebrow">Patents</p>
-          <h1>Invented with collaborators</h1>
-          <p>
-            Patents spanning intelligent network diagnosis and uncertainty-aware
-            electromagnetic modeling.
-          </p>
+          <h1>Patents</h1>
         </div>
         <ol className="patent-list">
           {patents.map((patent, index) => (
@@ -33,10 +27,16 @@ export default function PatentsPage() {
                 <p className="patent-inventors">{patent.inventors}</p>
                 <p className="patent-id">{patent.number}</p>
                 <p>{patent.summary}</p>
+                <a href={patent.cnkiLink} target="_blank" rel="noreferrer">
+                  View on CNKI <span aria-hidden="true">↗</span>
+                </a>
                 {patent.link && (
-                  <a href={patent.link} target="_blank" rel="noreferrer">
-                    Patent record <span aria-hidden="true">↗</span>
-                  </a>
+                  <>
+                    {" · "}
+                    <a href={patent.link} target="_blank" rel="noreferrer">
+                      Patent record <span aria-hidden="true">↗</span>
+                    </a>
+                  </>
                 )}
               </div>
             </li>
@@ -46,12 +46,12 @@ export default function PatentsPage() {
       <footer>
         <div>
           <p>Qizhe Li</p>
-          <span>Patents</span>
+          <span>Patents · © 2026</span>
         </div>
         <div className="footer-links">
-          <a href="/">About</a>
+          <Link href="/">About</Link>
           <a href="/publications/">Publications</a>
-          <a href="/everything/">Everything is Research</a>
+          <a href="/interesting/">Something Interesting</a>
         </div>
       </footer>
     </main>

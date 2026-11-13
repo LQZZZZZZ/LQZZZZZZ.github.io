@@ -10,10 +10,13 @@ export type ResearchWork = {
   year: number;
   area: ResearchArea;
   tag: string;
+  ccfRank?: "A" | "B" | "C";
+  submitted?: boolean;
   abstract: string;
   scholar: string;
   paper: string;
   code?: string;
+  demo?: string;
   image: string;
   imageAlt: string;
   imageCaption: string;
@@ -24,11 +27,29 @@ export const scholarUrl =
 
 export const researchWorks: ResearchWork[] = [
   {
+    id: "6g-network-intelligence",
+    title: "Current status, applications, and prospects of 6G wireless network intelligence driven by large models and agents",
+    authors: "Q. Li, Q. Sun, C. Liu, W. Yang, G. Zhu",
+    venue: "Information and Communications Technology and Policy, vol. 52, no. 10, pp. 72–79",
+    year: 2026,
+    area: "AI for Networks",
+    tag: "6G network intelligence",
+    abstract: "A review of large models and agents for 6G wireless network intelligence, covering foundation models, wireless task applications, network agents, and capability evaluation. A RAN user-experience diagnosis case study illustrates how large models coordinate domain knowledge and specialized tools. The paper discusses trustworthy closed-loop operation, cross-scenario transfer, evaluation, and the industrial ecosystem.",
+    scholar: "https://scholar.google.com/scholar?q=10.12267%2Fj.issn.2096-5931.2026.10.009",
+    paper: "http://ictp.caict.ac.cn/CN/10.12267/j.issn.2096-5931.2026.10.009",
+    image: "/research/6g-network-intelligence.svg",
+    imageAlt: "English schematic of NODA with LLM agent planning, diagnostic execution, and harness support",
+    imageCaption: "English adaptation of the NODA framework (Fig. 1).",
+  },
+  {
     id: "qoe-reasoner",
+    // JSAC is a CCF A journal; this manuscript is submitted, not accepted.
+    ccfRank: "A",
+    submitted: true,
     title:
       "QoEReasoner: An Agentic Reasoning Framework for Automated and Explainable QoE Diagnosis in RANs",
     authors: "Q. Li, H. Chen, S. Dai, Z. Li, Z. Hu, X. Li, G. Zhu, Q. Shi",
-    venue: "arXiv preprint",
+    venue: "Submitted to IEEE Journal on Selected Areas in Communications (JSAC); arXiv preprint",
     year: 2026,
     area: "AI for Networks",
     tag: "Agentic diagnosis",
@@ -37,12 +58,16 @@ export const researchWorks: ResearchWork[] = [
     scholar:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:W7OEmFMy1HYC",
     paper: "https://arxiv.org/abs/2606.01925",
+    code: "https://github.com/LQZZZZZZ/QoEReasoner",
+    demo: "https://github.com/LQZZZZZZ/QoEReasoner/releases/tag/demo-v1.0",
     image: "/research/qoe-reasoner-overview.png",
     imageAlt: "System overview of the QoEReasoner diagnostic framework",
     imageCaption: "System overview from the paper.",
   },
   {
     id: "dk-root",
+    // CCF Computer Networks journal catalogue: https://www.ccf.org.cn/Academic_Evaluation/CN/
+    ccfRank: "A",
     title:
       "DK-Root: A Joint Data-and-Knowledge-Driven Framework for Root Cause Analysis of QoE Degradations in Mobile Networks",
     authors:
@@ -112,8 +137,8 @@ export const researchWorks: ResearchWork[] = [
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:d1gkVwhDpl0C",
     paper: "https://doi.org/10.1080/0305215X.2023.2170367",
     image: "/research/rego-method.png",
-    imageAlt: "Method sketch showing the exploration and exploitation balance in REGO",
-    imageCaption: "Editorial method sketch based on the paper.",
+    imageAlt: "Original result figure from the REGO paper",
+    imageCaption: "Figure from the paper.",
   },
   {
     id: "morris",
@@ -131,8 +156,8 @@ export const researchWorks: ResearchWork[] = [
     paper:
       "https://doi.org/10.1615/Int.J.UncertaintyQuantification.2022044335",
     image: "/research/morris-method.png",
-    imageAlt: "Method sketch of progressive sampling and the Morris stopping criterion",
-    imageCaption: "Editorial method sketch based on the paper.",
+    imageAlt: "Flow chart of the enhanced Morris framework",
+    imageCaption: "Figure from the paper.",
   },
   {
     id: "pc-kriging",
@@ -149,8 +174,8 @@ export const researchWorks: ResearchWork[] = [
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:qjMakFHDy7sC",
     paper: "https://doi.org/10.1145/3644523.3644637",
     image: "/research/pc-kriging-method.png",
-    imageAlt: "Method sketch of data-driven PC-Kriging with correlated inputs",
-    imageCaption: "Editorial method sketch based on the paper.",
+    imageAlt: "Construction process of the data-driven PC-Kriging method",
+    imageCaption: "Figure from the paper.",
   },
   {
     id: "apce",
@@ -167,7 +192,7 @@ export const researchWorks: ResearchWork[] = [
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=2XdjuasAAAAJ&citation_for_view=2XdjuasAAAAJ:9yKSN-GCB0IC",
     paper: "https://doi.org/10.1109/ICSRS56243.2022.10067257",
     image: "/research/apce-method.png",
-    imageAlt: "Method sketch of arbitrary polynomial chaos expansion for sensitivity analysis",
-    imageCaption: "Editorial method sketch based on the paper.",
+    imageAlt: "Workflow of arbitrary polynomial chaos expansion for sensitivity analysis",
+    imageCaption: "Figure from the paper.",
   },
 ];

@@ -38,7 +38,7 @@ export default function DailyCalendar({ entries }: { entries: DailyEntry[] }) {
           <button type="button" onClick={() => changeMonth(1)} aria-label="Next month">→</button>
         </div>
       </div>
-      <div className="calendar-grid" role="grid" aria-label={`${monthLabel} daily sharing calendar`}>
+      <div className="calendar-grid" role="grid" aria-label={`${monthLabel} sharing calendar`}>
         {weekDays.map((day) => <div className="calendar-weekday" role="columnheader" key={day}>{day}</div>)}
         {cells.map((cell) => {
           const dayEntries = entries.filter((entry) => entry.date === cell.key);

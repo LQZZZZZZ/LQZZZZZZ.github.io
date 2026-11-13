@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import InterestingNav from "../InterestingNav";
-import SiteHeader from "../SiteHeader";
 import { researchNotes } from "../notes-data";
 
 export const metadata: Metadata = {
@@ -12,16 +11,10 @@ export const metadata: Metadata = {
 export default function ResearchNotesPage() {
   return (
     <main>
-      <SiteHeader innerPage />
       <InterestingNav />
       <section className="section page-section notes-section">
         <div className="section-heading">
-          <p className="eyebrow">Something Interesting · 02</p>
-          <h1>Thoughts along the way</h1>
-          <p>
-            Questions, observations, and honest moments from everyday research,
-            with the newest note first.
-          </p>
+          <h1>Research Posts</h1>
         </div>
 
         <ol className="notes-timeline" aria-label="Research notes in reverse chronological order">
@@ -42,11 +35,11 @@ export default function ResearchNotesPage() {
       <footer>
         <div>
           <p>Qizhe Li</p>
-          <span>Research Posts</span>
+          <span>Research Posts · © 2026</span>
         </div>
         <div className="footer-links">
           <a href="/interesting/">Something Interesting</a>
-          <a href="/interesting/daily/">Daily Sharing</a>
+          <a href="/interesting/daily/">Sharing Calendar</a>
         </div>
       </footer>
     </main>

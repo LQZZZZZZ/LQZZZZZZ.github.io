@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import InterestingNav from "../InterestingNav";
-import SiteHeader from "../SiteHeader";
 
 export const metadata: Metadata = {
   title: "Not-Quite Research · Qizhe Li",
@@ -78,17 +78,10 @@ function TennisVisual() {
 export default function EverythingPage() {
   return (
     <main>
-      <SiteHeader innerPage />
       <InterestingNav />
 
       <header className="notebook-hero">
-        <p className="eyebrow">Something Interesting · 01</p>
         <h1>Not-Quite Research</h1>
-        <p>
-          Not every useful question begins as a paper. This page keeps the
-          tools, prototypes, and everyday investigations that sit outside my
-          formal publication record.
-        </p>
       </header>
 
       <section className="project-notes" aria-label="Independent research projects">
@@ -100,9 +93,6 @@ export default function EverythingPage() {
                 <span>01 · 2026</span>
                 <small>Public system</small>
               </div>
-              <p className="project-question">
-                How can a literature routine become a dependable research instrument?
-              </p>
               <h2>Daily Literature Agent</h2>
               <p>
                 A configurable research assistant that retrieves recent papers
@@ -116,11 +106,6 @@ export default function EverythingPage() {
                 <li>LLM paper analysis</li>
                 <li>Markdown, HTML, and email reports</li>
               </ul>
-              <p className="project-detail">
-                SQLite history prevents repeated recommendations, while the
-                reporting layer keeps both individual paper notes and emerging
-                topic trends.
-              </p>
               <a
                 className="project-link"
                 href="https://github.com/LQZZZZZZ/AutoPaperReporter"
@@ -139,9 +124,6 @@ export default function EverythingPage() {
                 <span>02 · 2026</span>
                 <small>Private prototype</small>
               </div>
-              <p className="project-question">
-                Can an AI coach distinguish movement quality from shot outcome?
-              </p>
               <h2>TennisTrace</h2>
               <p>
                 A video-analysis system that combines player motion and ball
@@ -155,12 +137,6 @@ export default function EverythingPage() {
                 <li>Stroke semantics</li>
                 <li>Calibrated four-part scoring</li>
               </ul>
-              <p className="project-detail">
-                The scoring engine evaluates action mechanics, ball quality,
-                stability, and efficiency. The language model explains those
-                structured results and proposes focused practice drills rather
-                than inventing the score itself.
-              </p>
               <p className="project-private-note">
                 Ongoing private work · source videos and code are not published.
               </p>
@@ -170,7 +146,7 @@ export default function EverythingPage() {
       </section>
 
       <div className="notebook-return">
-        <a href="/">← Return to the academic profile</a>
+        <Link href="/">← Return to the academic profile</Link>
       </div>
 
       <footer>

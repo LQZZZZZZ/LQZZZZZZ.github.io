@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const endpoint =
   "https://api.counterapi.dev/v1/lqzzzzzz-github-io/visitors";
 const domain = "lqzzzzzz.github.io";
-const storageKey = "qizhe-li-visitor-counted-v1";
 
 export default function VisitorCounter() {
   const [count, setCount] = useState<number | null>(null);
@@ -14,12 +13,14 @@ export default function VisitorCounter() {
   useEffect(() => {
     const controller = new AbortController();
     const production = window.location.hostname === domain;
-    const hasVisited = window.localStorage.getItem(storageKey) === "yes";
-    const shouldCount = production && !hasVisited;
+    const homepage = window.location.pathname === "/";
+    const shouldCount = production && homepage;
 
     async function loadCount() {
       try {
         const response = await fetch(shouldCount ? `${endpoint}/up` : endpoint, {
+          cache: "no-store",
+          headers: { Accept: "application/json" },
           signal: controller.signal,
         });
 
@@ -31,7 +32,6 @@ export default function VisitorCounter() {
         }
 
         setCount(data.count);
-        if (shouldCount) window.localStorage.setItem(storageKey, "yes");
       } catch (error) {
         if ((error as Error).name !== "AbortError") setAvailable(false);
       }
@@ -42,14 +42,13 @@ export default function VisitorCounter() {
   }, []);
 
   return (
-    <div className="visitor-card" aria-live="polite">
-      <span className="visitor-dot" aria-hidden="true" />
+    <div className="visitor-cloud" aria-label="Site visitor count" aria-live="polite">
       {available ? (
         count === null ? (
           <span>Welcome</span>
         ) : (
           <span>
-            Welcome, visitor No.{" "}
+            Visitor No.{" "}
             <strong>{count.toLocaleString("en-US")}</strong>
           </span>
         )

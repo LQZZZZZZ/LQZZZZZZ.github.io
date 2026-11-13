@@ -20,8 +20,7 @@ export default function ResearchTimeline() {
   const [filter, setFilter] = useState<(typeof filters)[number]>("All");
 
   const works = useMemo(
-    () =>
-      filter === "All"
+    () => filter === "All"
         ? researchWorks
         : researchWorks.filter((work) => work.area === filter),
     [filter],
@@ -30,10 +29,11 @@ export default function ResearchTimeline() {
   return (
     <div className="timeline-explorer">
       <div className="timeline-toolbar">
-        <div className="timeline-filters" aria-label="Filter research timeline">
+        <div className="timeline-filters" aria-label="Filter publications">
           {filters.map((option) => (
             <button
               className={filter === option ? "active" : ""}
+              aria-pressed={filter === option}
               key={option}
               onClick={() => setFilter(option)}
               type="button"
@@ -62,18 +62,24 @@ export default function ResearchTimeline() {
             </div>
             {work.image && (
               <figure>
-                <img src={work.image} alt={work.imageAlt} draggable="false" />
+                <a href={work.paper} target="_blank" rel="noreferrer"><img src={work.image} alt={work.imageAlt} draggable="false" loading="lazy" /></a>
                 <figcaption>{work.imageCaption}</figcaption>
               </figure>
             )}
             <div className="timeline-card-body">
               <div className="work-classification">
+                {work.authors.startsWith("Q. Li,") && <span className="publication-badge first-author-badge">First author</span>}
+                {work.ccfRank && (
+                  <a className="publication-badge ccf-badge" href="https://www.ccf.org.cn/Academic_Evaluation/CN/" target="_blank" rel="noreferrer">
+                    {work.submitted ? "Submitted · " : ""}CCF {work.ccfRank}
+                  </a>
+                )}
                 <span>{work.area}</span>
                 <span>{work.tag}</span>
               </div>
-              <h3>{work.title}</h3>
-              <p className="work-authors">{work.authors}</p>
-              <p className="work-venue">{work.venue}</p>
+              <h3><a href={work.paper} target="_blank" rel="noreferrer">{work.title}</a></h3>
+              <p className="work-authors">{work.authors.split(/(Q\. Li)/).map((part, i) => part === "Q. Li" ? <strong key={i}>{part}</strong> : part)}</p>
+              <p className="work-venue">{work.ccfRank && !work.submitted ? <strong>{work.venue}</strong> : work.venue}</p>
               <p className="work-abstract">{work.abstract}</p>
               <div className="timeline-links">
                 <a href={work.scholar} target="_blank" rel="noreferrer">
@@ -82,6 +88,11 @@ export default function ResearchTimeline() {
                 <a href={work.paper} target="_blank" rel="noreferrer">
                   Paper <Arrow />
                 </a>
+                {work.demo && (
+                  <a href={work.demo} target="_blank" rel="noreferrer">
+                    Demo <Arrow />
+                  </a>
+                )}
                 {work.code && (
                   <a href={work.code} target="_blank" rel="noreferrer">
                     Code <Arrow />
