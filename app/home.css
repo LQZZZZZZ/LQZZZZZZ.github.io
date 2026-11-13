@@ -1,6 +1,23 @@
 .home-about { scroll-margin-top: 100px; }
-.home-intro p { margin: 0 0 18px; }
-.home-intro > p:first-child { padding-bottom: 19px; border-bottom: 1px solid var(--line); }
+.home-intro { margin: 0; }
+.intro-row { display: grid; grid-template-columns: 158px minmax(0, 1fr); gap: 22px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+.intro-row:first-child { padding-top: 0; }
+.intro-row:last-child { padding-bottom: 0; border-bottom: 0; }
+.intro-row dt { display: flex; gap: 9px; align-items: baseline; color: #27668c; font-size: 13px; font-weight: 600; line-height: 1.8; padding-top: 2px; }
+.intro-row dt > span { flex: 0 0 20px; font-size: 16px; line-height: 1.4; }
+.intro-row dd { margin: 0; min-width: 0; line-height: 1.75; }
+.intro-row p { margin: 0; }
+.intro-row p + p { margin-top: 9px; }
+.intro-keyword { color: #27668c; }
+.intro-award { color: #8a631e; }
+.intro-contact { white-space: nowrap; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1100px) {
+  .intro-row { grid-template-columns: 142px minmax(0, 1fr); gap: 16px; }
+}
+@media (max-width: 900px) {
+  .intro-row { grid-template-columns: minmax(0, 1fr); gap: 7px; padding: 16px 0; }
+  .intro-row dt { padding-top: 0; }
+}
 .home-section { margin-top: 34px; scroll-margin-top: 95px; }
 .home-section > h2, .section-title-row { border-bottom: 1px solid var(--line); padding-bottom: 10px; margin: 0 0 20px; }
 .section-title-row { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
@@ -17,6 +34,7 @@
 .experience-logo { width: 58px; height: 54px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .experience-logo img { width: 46px; height: 46px; object-fit: contain; }
 .experience-logo-icbc img { width: 58px; height: auto; }
+.experience-logo-huawei img { width: 46px; height: 46px; }
 .experience-logo-cuhk, .experience-logo-sribd { justify-content: flex-start; }
 .experience-logo-cuhk img, .experience-logo-sribd img { flex: 0 0 auto; width: auto; max-width: none; height: 44px; }
 .experience-logo-sribd img { margin-left: 6px; }
@@ -39,10 +57,6 @@
   .experience-list h3 { font-size: 14px; }
 }
 
-.intro-reviewing { margin-bottom: 18px; }
-.intro-reviewing p { margin-bottom: 6px; }
-.intro-reviewing ul { margin: 0; padding-left: 23px; }
-.intro-reviewing li + li { margin-top: 6px; }
 .contact-card { padding: 22px; background: var(--pink); border: 1px solid var(--line-dark); border-radius: 6px; }
 .contact-card h2 { margin: 0 0 10px; font-size: 20px; }
 .contact-card p { margin: 0 0 12px; }
@@ -50,3 +64,16 @@
 .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .contact-actions a, .contact-actions button { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 14px; border: 1px solid var(--rose); border-radius: 4px; cursor: pointer; background: white; color: var(--rose); }
 .contact-card .contact-status { margin: 10px 0 0; font-size: 13px; }
+
+.service-honors-group + .service-honors-group { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+.service-honors-group > h3 { margin: 0 0 14px; color: #27668c; font-size: 16px; }
+.reviewing-details { margin: 0; }
+.reviewing-details > div { display: grid; grid-template-columns: 158px minmax(0, 1fr); gap: 22px; }
+.reviewing-details > div + div { margin-top: 14px; }
+.reviewing-details dt { font-size: 13px; color: var(--muted); padding-top: 2px; }
+.reviewing-details dd { margin: 0; min-width: 0; }
+.reviewing-details ul { padding-left: 18px; margin: 0; }
+.reviewing-details li + li { margin-top: 5px; }
+@media (max-width: 900px) {
+  .reviewing-details > div { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}

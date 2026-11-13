@@ -10,7 +10,7 @@ const links = [
   { href: "/#publications", label: "Publications" },
   { href: "/patents/", label: "Patents" },
   { href: "/#education", label: "Education" },
-  { href: "/#awards", label: "Awards" },
+  { href: "/#awards", label: "Service & Honors" },
   { href: "/interesting/", label: "Something Interesting" },
 ];
 

@@ -12,7 +12,7 @@ test("homepage presents profile, research focus, news, and background", async ()
   ]);
 
   const page = home + sidebar;
-  assert.match(page, /Ph\.D\. student<\/strong> in Computer and Information Engineering/);
+  assert.match(page, /Ph\.D\. student in Computer and Information Engineering/);
   assert.match(page, /Joint Ph.D. Training/);
   assert.match(page, /Shenzhen Research Institute of Big Data/);
   assert.match(page, /Shenzhen, advised by/);

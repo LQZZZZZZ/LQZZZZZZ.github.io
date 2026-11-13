@@ -50,7 +50,7 @@ const experience = [
     label: "Huawei",
     role: "Intern",
     logo: "/institutions/huawei.svg",
-    logoClass: "",
+    logoClass: "experience-logo-huawei",
   },
 ];
 
@@ -81,27 +81,39 @@ export default function Home() {
     <main className="home-page">
       <h1 className="visually-hidden">Qizhe Li — Academic Homepage</h1>
       <section className="home-about" id="about" aria-label="About me">
-        <div className="home-intro">
-          <p><strong>🎓 Education:</strong> I am a <strong>Ph.D. student</strong> in Computer and Information Engineering at The Chinese University of Hong Kong,
-            Shenzhen, advised by <a href="https://sites.google.com/view/guangxuzhu/home" target="_blank" rel="noreferrer">Prof. Guangxu Zhu</a>.
-            I am jointly trained by <strong>CUHK-Shenzhen</strong>, the <strong>Shenzhen Research Institute of Big Data (SRIBD)</strong>,
-            and the <strong>Shenzhen International Center for Industrial and Applied Mathematics (SICIAM)</strong>,
-            and receive the <strong>SRIBD Ph.D. Scholarship (Gold Award)</strong>.</p>
-          <p><strong>🔬 Research:</strong> My research focuses on <strong>intelligent networks and AI-RAN</strong>, exploring how machine learning,{' '}
-            <strong>large language models and agents</strong> can advance wireless network intelligence.
-            My earlier work studied uncertainty quantification, sensitivity analysis, and surrogate-based optimization.</p>
-          <div className="intro-reviewing"><p><strong>📝 Reviewing:</strong> I serve as a reviewer for:</p>
-            <ul>
-              <li><strong>Conferences:</strong> IEEE WCNC 2024, IEEE PIMRC 2025, and IEEE ICC 2026.</li>
-              <li><strong>Journals:</strong> Journal of Nanjing University of Posts and Telecommunications (《南京邮电大学学报》),
-                Journal of Electronics &amp; Information Technology (《电子与信息学报》),
-                and IEEE Journal on Selected Areas in Communications (JSAC), 2026 special issue on agentic AI.</li>
-            </ul>
+        <dl className="home-intro">
+          <div className="intro-row">
+            <dt><span aria-hidden="true">🎓</span> Education:</dt>
+            <dd>
+              <p>I am a Ph.D. student in Computer and Information Engineering at The Chinese University of Hong Kong,
+                Shenzhen, advised by <a href="https://sites.google.com/view/guangxuzhu/home" target="_blank" rel="noreferrer">Prof. Guangxu Zhu</a>.</p>
+              <p>My Ph.D. training is jointly provided by CUHK-Shenzhen, the Shenzhen Research Institute of Big Data (SRIBD),
+                and the Shenzhen International Center for Industrial and Applied Mathematics (SICIAM).</p>
+            </dd>
           </div>
-          <p><strong>🎾 Beyond Research:</strong> Outside research, I enjoy playing tennis and photography.</p>
-          <p><strong>🤝 Contact:</strong> I am happy to connect, exchange ideas, and collaborate
-            on intelligent networks and AI-driven systems. <a href="#contact">Get in touch!</a></p>
-        </div>
+          <div className="intro-row">
+            <dt><span aria-hidden="true">🔬</span> Research:</dt>
+            <dd>
+              <p>I work on <span className="intro-keyword">intelligent networks and AI-RAN</span>, exploring how machine learning,{' '}
+                <span className="intro-keyword">large language models and agents</span> can advance wireless network intelligence.</p>
+              <p>My earlier work focused on uncertainty quantification, sensitivity analysis, and surrogate-based optimization.
+                I also review for communications conferences and journals. <a href="#awards">Service details →</a></p>
+            </dd>
+          </div>
+          <div className="intro-row">
+            <dt><span aria-hidden="true">🏅</span> Scholarship:</dt>
+            <dd><p>I receive the SRIBD Ph.D. Scholarship <span className="intro-award">(Gold Award)</span>.</p></dd>
+          </div>
+          <div className="intro-row">
+            <dt><span aria-hidden="true">🎾</span> Beyond Research:</dt>
+            <dd><p>Outside research, I enjoy playing tennis and photography.</p></dd>
+          </div>
+          <div className="intro-row">
+            <dt><span aria-hidden="true">🤝</span> Contact:</dt>
+            <dd><p>I am happy to connect, exchange ideas, and collaborate on intelligent networks and AI-driven systems.{' '}
+              <a className="intro-contact" href="#contact">Get in touch <span aria-hidden="true">→</span></a></p></dd>
+          </div>
+        </dl>
       </section>
 
       <section className="home-section" id="news" aria-labelledby="news-title">
@@ -131,7 +143,24 @@ export default function Home() {
       </section>
 
       <section className="home-section" id="awards" aria-labelledby="awards-title">
-        <h2 id="awards-title">🏆 Honors &amp; Awards</h2>
+        <h2 id="awards-title">🏅 Service &amp; Honors</h2>
+        <div className="service-honors-group">
+          <h3>Academic Service</h3>
+          <dl className="reviewing-details">
+            <div><dt>Conference Reviewer</dt><dd><ul>
+              <li>IEEE WCNC 2024</li>
+              <li>IEEE PIMRC 2025</li>
+              <li>IEEE ICC 2026</li>
+            </ul></dd></div>
+            <div><dt>Journal Reviewer</dt><dd><ul>
+              <li>Journal of Nanjing University of Posts and Telecommunications</li>
+              <li>Journal of Electronics &amp; Information Technology</li>
+              <li>IEEE Journal on Selected Areas in Communications (JSAC) — 2026 special issue on agentic AI</li>
+            </ul></dd></div>
+          </dl>
+        </div>
+        <div className="service-honors-group">
+          <h3>Honors &amp; Awards</h3>
         <ul className="awards-list">
           <li><strong>Ph.D. Scholarship (Gold Award)</strong>, Shenzhen Research Institute of Big Data</li>
           <li><strong>First Prize</strong>, 2026 Greater Bay Area Graduate Research Forum <span className="award-year">(Oct. 2026)</span></li>
@@ -140,6 +169,7 @@ export default function Home() {
           <li><strong>Third Prize, Graduate Division</strong>, 12th MathorCup University Mathematical Modeling Challenge</li>
           <li><strong>Second Prize</strong>, 2nd National College Mathematics Ability Challenge</li>
         </ul>
+        </div>
       </section>
 
       <ContactCard />
