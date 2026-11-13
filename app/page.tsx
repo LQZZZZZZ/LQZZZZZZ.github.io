@@ -86,8 +86,8 @@ export default function Home() {
             <dt><span aria-hidden="true">🎓</span> Education:</dt>
             <dd>
               <p>I am a Ph.D. student in Computer and Information Engineering at The Chinese University of Hong Kong,
-                Shenzhen, advised by <a href="https://sites.google.com/view/guangxuzhu/home" target="_blank" rel="noreferrer">Prof. Guangxu Zhu</a>.</p>
-              <p>My Ph.D. training is jointly provided by CUHK-Shenzhen, the Shenzhen Research Institute of Big Data (SRIBD),
+                Shenzhen, advised by <a href="https://sites.google.com/view/guangxuzhu/home" target="_blank" rel="noreferrer">Prof. Guangxu Zhu</a>.{' '}
+                My Ph.D. training is jointly provided by CUHK-Shenzhen, the Shenzhen Research Institute of Big Data (SRIBD),
                 and the Shenzhen International Center for Industrial and Applied Mathematics (SICIAM).</p>
             </dd>
           </div>
@@ -95,14 +95,10 @@ export default function Home() {
             <dt><span aria-hidden="true">🔬</span> Research:</dt>
             <dd>
               <p>I work on <span className="intro-keyword">intelligent networks and AI-RAN</span>, exploring how machine learning,{' '}
-                <span className="intro-keyword">large language models and agents</span> can advance wireless network intelligence.</p>
-              <p>My earlier work focused on uncertainty quantification, sensitivity analysis, and surrogate-based optimization.
+                <span className="intro-keyword">large language models and agents</span> can advance wireless network intelligence.{' '}
+                My earlier work focused on uncertainty quantification, sensitivity analysis, and surrogate-based optimization.
                 I also review for communications conferences and journals. <a href="#awards">Service details →</a></p>
             </dd>
-          </div>
-          <div className="intro-row">
-            <dt><span aria-hidden="true">🏅</span> Scholarship:</dt>
-            <dd><p>I receive the SRIBD Ph.D. Scholarship <span className="intro-award">(Gold Award)</span>.</p></dd>
           </div>
           <div className="intro-row">
             <dt><span aria-hidden="true">🎾</span> Beyond Research:</dt>
