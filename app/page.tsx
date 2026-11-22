@@ -147,6 +147,7 @@ export default function Home() {
               <li>IEEE WCNC 2024</li>
               <li>IEEE PIMRC 2025</li>
               <li>IEEE ICC 2026</li>
+              <li><a href="https://uconn-dsis.github.io/ai4ts-aaai2027/" target="_blank" rel="noreferrer">AAAI 2027 Workshop AI4TS: AI for Time Series Analysis</a> — Invited Reviewer</li>
             </ul></dd></div>
             <div><dt>Journal Reviewer</dt><dd><ul>
               <li>Journal of Nanjing University of Posts and Telecommunications</li>
